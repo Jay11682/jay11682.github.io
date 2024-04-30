@@ -40,7 +40,12 @@ footer {
 }
 
 head title {
-    font-size: 36px; /* Set font size for the title */
+    font-size: 48px; 
+}
+
+head li {
+    font-size: 24px; 
+    color: #C8C372;
 }
 
 a:hover {
