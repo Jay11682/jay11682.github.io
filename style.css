@@ -13,8 +13,7 @@ body {
     top: 0;
     left: 0; 
     background-color: #1E4D2B;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
