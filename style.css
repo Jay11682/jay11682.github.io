@@ -37,7 +37,7 @@ nav ul li a:active {
 }
 
 main {
-    padding: 20px;
+    padding: 20px 20px 60px; /* Adjust padding top, right, bottom, left */
 }
 
 section {
@@ -83,6 +83,11 @@ a:hover {
     display: inline-block;
     vertical-align: middle;
     width: 20px;
+}
+
+.email-section a {
+    color: white;
+    font-weight: bold;
 }
 
 footer ul {
