@@ -99,5 +99,5 @@ footer ul li:not(:last-child) {
 .top-right a {
     color: white;
     text-decoration: none;
-    margin-left: 10px; /* Add some spacing between links */
+    margin-left: 10px;
 }
