@@ -104,10 +104,16 @@ footer ul {
 .social-bar a {
     display: inline-block;
     text-decoration: none; /* Remove underline */
+    color: white; /* Set link color to white */
+    font-size: 30px; /* Set font size */
+    margin-bottom: 10px; /* Add spacing between links */
 }
 
-footer ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-socials a {
+    margin: 0 10px; /* Add spacing between social links */
 }
