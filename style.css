@@ -45,6 +45,7 @@ head title {
 
 head h1 nav ul li {
     font-size: 24px; 
+    font-weight: bold;
     color: #C8C372;
 }
 
