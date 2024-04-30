@@ -45,6 +45,7 @@ section {
 }
 
 footer {
+    text-align: center;
     background-color: #1E4D2B;
     color: #fff;
     text-align: center;
@@ -54,10 +55,34 @@ footer {
     width: 100%;
 }
 
+footer h2 {
+    margin-bottom: 10px; /* Add spacing below the heading */
+}
+
+footer ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+footer ul li {
+    display: inline; /* Display list items inline */
+    margin-right: 20px; /* Add spacing between list items */
+}
+
 head title {
     font-size: 48px; 
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+.email-section img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+}
+
+footer ul {
+    list-style-type: none;
 }
