@@ -41,11 +41,10 @@ footer {
     text-align: center;
     background-color: #1E4D2B;
     color: #fff;
-    text-align: center;
     padding: 10px;
     position: absolute;
     bottom: 0;
-    width: 160px;
+    width: 100%;
 }
 
 footer h2 {
@@ -77,4 +76,8 @@ a:hover {
 .email-section a {
     color: white;
     font-weight: bold;
+}
+
+footer p {
+    color: white; /* Make copyright text white */
 }
