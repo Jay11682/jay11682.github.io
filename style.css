@@ -6,7 +6,7 @@ body {
 
 /* The sidebar menu */
 .sidenav {
-    height: 100%;
+    height: calc(100% - 60px); /* Adjusted height */
     width: 160px;
     position: fixed;
     z-index: 1;
@@ -19,10 +19,10 @@ body {
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 10px 8px; /* Adjusted padding */
     text-decoration: none;
     font-size: 25px;
-    color: #fff; /* Change color to white */
+    color: #fff;
     display: block;
 }
 
@@ -41,7 +41,7 @@ footer {
     text-align: center;
     background-color: #1E4D2B;
     color: #fff;
-    padding: 10px;
+    padding: 20px; /* Adjusted padding */
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -49,7 +49,7 @@ footer {
 
 footer h2 {
     margin-bottom: 10px;
-    color: white; /* Make "Socials" white */
+    color: white;
 }
 
 footer ul {
@@ -80,10 +80,17 @@ a:hover {
 }
 
 footer p {
-    color: white; /* Make copyright text white */
+    color: white;
 }
 
 /* Remove bullet points from footer links */
 footer ul li {
     list-style-type: none;
+}
+
+/* Align "Socials" with navigation links */
+footer h2 {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
