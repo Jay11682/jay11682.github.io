@@ -21,6 +21,21 @@ nav ul li {
     margin-right: 20px;
 }
 
+nav ul li a {
+    color: #C8C372; /* Set link color to gold */
+    font-weight: bold; /* Make links bold */
+    text-decoration: none; /* Remove default underline */
+    transition: transform 0.2s; /* Add transition for smooth click effect */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+nav ul li a:active {
+    transform: translateY(2px); /* Move link down slightly when clicked */
+}
+
 main {
     padding: 20px;
 }
@@ -41,12 +56,6 @@ footer {
 
 head title {
     font-size: 48px; 
-}
-
-head h1 nav ul li {
-    font-size: 24px; 
-    font-weight: bold;
-    color: #C8C372;
 }
 
 a:hover {
