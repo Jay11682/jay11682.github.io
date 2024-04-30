@@ -62,11 +62,13 @@ footer h2 {
 footer ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove default padding */
+    text-align: center;
 }
 
 footer ul li {
     display: inline; /* Display list items inline */
     margin-right: 20px; /* Add spacing between list items */
+    text-align: center;
 }
 
 head title {
@@ -85,4 +87,8 @@ a:hover {
 
 footer ul {
     list-style-type: none;
+}
+
+footer ul li:last-child {
+    margin-right: 0; /* Remove margin from the last list item */
 }
