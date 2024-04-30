@@ -11,8 +11,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--csu-green); /* Set background color to CSU Green */
-    color: var(--csu-white); /* Set text color to CSU White */
+    background-color: var(--csu-white); 
+    color: var(--csu-white);
 }
 
 header {
