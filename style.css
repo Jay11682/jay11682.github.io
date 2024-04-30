@@ -1,23 +1,12 @@
-/* Define colors */
-:root {
-    --csu-green: #1E4D2B;
-    --csu-gold: #C8C372;
-    --aggie-orange: #D9782D;
-    --csu-black: #59595B;
-    --csu-white: #FFFFFF;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--csu-white); 
-    color: var(--csu-white);
 }
 
 header {
-    background-color: var(--csu-green);
-    color: var(--csu-white);
+    background-color: #1E4D2B;
+    color: #fff;
     padding: 20px;
 }
 
@@ -34,7 +23,6 @@ nav ul li {
 
 main {
     padding: 20px;
-    background-color: var(--csu-white); /* Set content background color to white */
 }
 
 section {
@@ -42,28 +30,19 @@ section {
 }
 
 footer {
+    background-color: #1E4D2B;
+    color: #fff;
     text-align: center;
-    padding: 20px 0;
-    background-color: var(--csu-green);
-    color: var(--csu-white);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-h1, h2 {
-    color: var(--csu-green); /* Set headings color to CSU Green */
-}
-
-a {
-    color: var(--csu-gold); /* Set link color to CSU Gold */
-    text-decoration: none;
+head title {
+    font-size: 36px; /* Set font size for the title */
 }
 
 a:hover {
     text-decoration: underline;
-}
-
-#social {
-    background-color: var(--csu-green);
-    color: var(--csu-white);
-    text-align: center;
-    padding: 20px 0;
 }
