@@ -88,7 +88,3 @@ a:hover {
 footer ul {
     list-style-type: none;
 }
-
-footer ul li:last-child {
-    margin-right: 0; /* Remove margin from the last list item */
-}
