@@ -11,12 +11,11 @@ body {
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0; /* Align with the left side of the page */
+    left: 0; 
     background-color: #1E4D2B;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
     align-items: center; /* Center horizontally */
 }
 
@@ -89,4 +88,16 @@ footer ul li {
 /* Add spacing between footer links */
 footer ul li:not(:last-child) {
     margin-right: 20px;
+}
+
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.top-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px; /* Add some spacing between links */
 }
