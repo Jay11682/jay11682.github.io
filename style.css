@@ -12,10 +12,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--csu-green); /* Set background color to CSU Green */
-    color: var(--csu-black); /* Set text color to CSU Black */
+    color: var(--csu-white); /* Set text color to CSU White */
 }
 
 header {
+    background-color: var(--csu-green);
+    color: var(--csu-white);
     padding: 20px;
 }
 
@@ -32,6 +34,7 @@ nav ul li {
 
 main {
     padding: 20px;
+    background-color: var(--csu-white); /* Set content background color to white */
 }
 
 section {
@@ -41,10 +44,12 @@ section {
 footer {
     text-align: center;
     padding: 20px 0;
+    background-color: var(--csu-green);
+    color: var(--csu-white);
 }
 
 h1, h2 {
-    color: var(--csu-white); /* Set headings color to CSU White */
+    color: var(--csu-green); /* Set headings color to CSU Green */
 }
 
 a {
@@ -56,22 +61,9 @@ a:hover {
     text-decoration: underline;
 }
 
-.project {
-    background-color: var(--csu-white);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.project h3 {
-    color: var(--csu-green);
-}
-
-.project p {
-    color: var(--csu-black);
-}
-
-.project a {
-    color: var(--aggie-orange);
+#social {
+    background-color: var(--csu-green);
+    color: var(--csu-white);
+    text-align: center;
+    padding: 20px 0;
 }
