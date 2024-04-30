@@ -1,12 +1,21 @@
+:root {
+    --csu-green: #1E4D2B;
+    --csu-gold: #C8C372;
+    --aggie-orange: #D9782D;
+    --csu-black: #59595B;
+    --csu-white: #FFFFFF;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--csu-white);
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--csu-green);
+    color: var(--csu-white);
     padding: 20px;
 }
 
@@ -30,11 +39,18 @@ section {
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--csu-green);
+    color: var(--csu-white);
     text-align: center;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+#social {
+    background-color: var(--csu-green);
+    color: var(--csu-white);
+    text-align: center;
+    padding: 20px 0;
 }
