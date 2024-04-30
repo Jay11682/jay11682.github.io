@@ -22,7 +22,7 @@ body {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #fff; /* Change color to white */
     display: block;
 }
 
@@ -49,6 +49,7 @@ footer {
 
 footer h2 {
     margin-bottom: 10px;
+    color: white; /* Make "Socials" white */
 }
 
 footer ul {
@@ -80,4 +81,9 @@ a:hover {
 
 footer p {
     color: white; /* Make copyright text white */
+}
+
+/* Remove bullet points from footer links */
+footer ul li {
+    list-style-type: none;
 }
