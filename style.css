@@ -6,20 +6,23 @@ body {
 
 /* The sidebar menu */
 .sidenav {
-    height: calc(100% - 60px); /* Adjusted height */
+    height: 100%;
     width: 160px;
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: 0; /* Align with the left side of the page */
     background-color: #1E4D2B;
     overflow-x: hidden;
-    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
 }
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 10px 8px; /* Adjusted padding */
+    padding: 10px 8px;
     text-decoration: none;
     font-size: 25px;
     color: #fff;
@@ -41,15 +44,10 @@ footer {
     text-align: center;
     background-color: #1E4D2B;
     color: #fff;
-    padding: 20px; /* Adjusted padding */
+    padding: 20px;
     position: absolute;
     bottom: 0;
     width: 100%;
-}
-
-footer h2 {
-    margin-bottom: 10px;
-    color: white;
 }
 
 footer ul {
@@ -88,9 +86,7 @@ footer ul li {
     list-style-type: none;
 }
 
-/* Align "Socials" with navigation links */
-footer h2 {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 20px;
+/* Add spacing between footer links */
+footer ul li:not(:last-child) {
+    margin-right: 20px;
 }
