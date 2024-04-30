@@ -13,6 +13,7 @@ body {
     top: 0;
     left: 0; 
     background-color: #1E4D2B;
+    padding-top: 40px;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -88,16 +89,4 @@ footer ul li {
 /* Add spacing between footer links */
 footer ul li:not(:last-child) {
     margin-right: 20px;
-}
-
-.top-right {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.top-right a {
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
 }
