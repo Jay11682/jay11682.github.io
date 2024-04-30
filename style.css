@@ -93,3 +93,34 @@ a:hover {
 footer ul {
     list-style-type: none;
 }
+
+.social-bar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #1E4D2B;
+    padding: 10px;
+}
+
+.social-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-bar ul li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.social-bar ul li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+
+.social-bar ul li a:hover {
+    text-decoration: underline;
+}
+
