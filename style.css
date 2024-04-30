@@ -99,7 +99,6 @@ footer ul {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-color: #1E4D2B;
     padding: 10px;
 }
 
@@ -114,13 +113,15 @@ footer ul {
     margin-bottom: 10px;
 }
 
-.social-bar ul li a {
-    display: inline-block;
-    color: white;
-    text-decoration: none;
+.social-bar ul li a img {
+    display: block;
+    width: 40px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the images horizontally */
 }
 
-.social-bar ul li a:hover {
-    text-decoration: underline;
+.social-bar ul li a img:hover {
+    opacity: 0.7; /* Reduce opacity on hover */
 }
+
 
