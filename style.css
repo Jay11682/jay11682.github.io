@@ -81,6 +81,7 @@ footer p {
 /* Remove bullet points from footer links */
 footer ul li {
     list-style-type: none;
+    margin-bottom: 20px;
 }
 
 /* Add spacing between footer links */
