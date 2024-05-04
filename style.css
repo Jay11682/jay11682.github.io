@@ -43,7 +43,7 @@
 }
 
 .image-column {
-    width: calc(50% - 140px); /* Take up half of the remaining space, minus the space occupied by the sidenav */
+    width: calc(50% - 280px); /* Take up half of the remaining space, minus the space occupied by the sidenav and the margin on the left */
 }
 
 footer {
