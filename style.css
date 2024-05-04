@@ -33,8 +33,40 @@
     margin-left: 240px; /* Start 240px from the left */
     padding: 20px;
     font-size: 20px;
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Distribute space evenly between flex items */
+    display: flex;
+    height: 100%;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+    background-color: #1E4D2B;
+}
+
+/* Control the right side */
+.right {
+    background-color: #1E4D2B;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    border-radius: 10px;
 }
 
 .text-column {
