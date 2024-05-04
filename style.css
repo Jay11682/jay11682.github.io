@@ -150,6 +150,7 @@ h1 {
     margin: 0;
     border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
     border-bottom-right-radius: 10px;
+    text-align: center;
 }
 
 /* Hover effect to indicate clickable project */
