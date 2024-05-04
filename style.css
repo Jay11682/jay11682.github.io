@@ -39,7 +39,7 @@ body {
 /* Style page content */
 .main {
     margin-left: 23%; /* Start 240px from the left */
-    padding: 20px;
+    padding: 10px;
     font-size: 20px;
     display: flex;
     height: 100%;
@@ -142,6 +142,8 @@ h2 {
 .project {
     width: 90%; /* Adjust width of project sections */
     margin-bottom: 20px; /* Add margin between project sections */
+    border: 4px solid #1E4D2B; /* Add green border */
+    border-radius: 15px; 
 }
 
 .project-info {
