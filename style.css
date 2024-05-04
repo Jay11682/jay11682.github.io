@@ -1,3 +1,38 @@
+/* Media query for mobile responsiveness */
+@media only screen and (max-width: 768px) {
+    .sidenav {
+      width: 100%; /* Full width on mobile */
+      padding-top: 10px; /* Adjust top padding */
+    }
+  
+    .main {
+      margin-left: 0; /* Remove margin on mobile */
+      padding: 10px; /* Adjust padding */
+      flex-direction: column; /* Stack main content vertically on mobile */
+      align-items: center; /* Center main content horizontally */
+    }
+  
+    .split {
+      width: 100%; /* Full width on mobile */
+    }
+  
+    footer {
+      position: relative; /* Change position to relative */
+      margin-top: 20px; /* Add margin to separate from main content */
+      padding: 10px; /* Adjust padding */
+    }
+  
+    footer ul li {
+      margin-right: 0; /* Remove margin right */
+      margin-bottom: 10px; /* Add margin bottom */
+    }
+  
+    .email-section a {
+      display: block; /* Display email links as block */
+      margin-top: 5px; /* Add margin to separate email links */
+    }
+  }
+
 /* General body styles */
 body {
     font-family: Verdana, Geneva, sans-serif;
