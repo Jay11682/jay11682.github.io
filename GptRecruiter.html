@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Snellings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F48T6LRJCS');
+    </script>
+    <body>
+</head>
+
+<div class="sidenav">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="extras/Jay_Snellings_Resume.docx" download>Resume</a>
+    <!-- Footer contents moved to the sidebar -->
+    <footer>
+        <ul>
+            <li><div class="email-section">
+                <img src="extras/envelope.png" alt="Email">
+                <a href="mailto:Jsnellings03@gmail.com">Jsnellings03@gmail.com</a>
+            </div></li>
+            <li><div class="email-section">
+                <img src="extras/phone.png" alt="Phone">
+                <a href="tel:720-308-5038">+1 (720) 308-5038</a>
+            </div></li>
+            <li><a href="https://www.linkedin.com/in/jay-snellings/" style="color: white;"><i class="fab fa-linkedin"></i>‎</a><a href="https://github.com/Jay11682" style="color: white;"><i class="fab fa-github"></i>‎</a></li>
+        </ul>
+        <p>&copy; 2024 Jay Snellings</p>
+        
+    </footer>
+</div>
+
+<main class="main">
+    <div class="split left">
+        <div class="centered">
+            <h1>GPT Reruiter</h1>
+
+            <p> During my time at PeerSource, I was asked by my manager if I could create an AI system to help recruiters 
+                look through hundreds of resumes. Working with my boss to gather requirements, I created a system that rates
+                candidates on a scale from 1 to 10 on how good of a fit their resume is for a job posting. This score helps
+                recruiters save time and focus on the potentially better candidates. All resumes are still viewed by a real
+                person, but there is a feature available to sort out underqualified candidates who score under a certain threshold.
+            </p>
+            <h1>How it Works</h1>
+            <p> The script iterates through an outlook inbox which all of our incoming linkedin applicants go into. All of our LinkedIn
+                jobs have a name which corresponds with a name in a dictionary file that contains all of our job descriptions. The candidate's 
+                resume is downloaded and it's text is read into the system. For each email, ChatGPT is given the candidate's resume and the job 
+                description for the job they applied to and asked to act as a recruiter and score the person on their fit (the actual prompt is much 
+                more complicated). The email is then updated to reflect this score. Optionally the person can be sent automatically to a rejection
+                inbox if they fall below a certain score.
+            </p>
+
+        </div>
+    </div>
+    <div class="split right">
+        <div class="centered">
+            <img src="extras/gptRecruiter.png" alt="GPT Photo">
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
