@@ -19,7 +19,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center horizontally */
-    z-index: 2;
 }
 
 /* The navigation menu links */
@@ -29,6 +28,7 @@ body {
     font-size: 40px;
     color: #fff;
     display: block;
+    z-index: 2;
 }
 
 /* When you mouse over the navigation links, change their color */
