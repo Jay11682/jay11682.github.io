@@ -34,8 +34,8 @@
     padding: 20px;
     font-size: 20px;
     display: flex;
-    height: 100%;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Allow projects to wrap to the next row */
+    justify-content: space-between; /* Distribute space evenly between projects */
 }
 
 .split {
@@ -129,18 +129,22 @@ h2 {
 }
 
 .project {
-    width: 30%; /* Adjust width of project sections */
+    width: calc(33.33% - 20px); /* Set width to approximately one-third of the page width, accounting for margins */
     margin-bottom: 20px; /* Add margin between project sections */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .project-info {
     position: relative; /* Positioning context for project description */
+    width: 100%; /* Make sure the project info fills the entire project section */
 }
 
 .project-info img {
     width: 100%; /* Make images fill their container */
     border-radius: 10px; /* Add border radius for rounded corners */
-
 }
 
 .project-info p {
