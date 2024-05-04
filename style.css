@@ -35,6 +35,7 @@
     font-size: 20px;
     display: flex;
     height: 100%;
+    justify-content: space-around;
 }
 
 .split {
@@ -122,4 +123,40 @@ footer ul li:not(:last-child) {
 
 h1 {
     font-size: 40px;
+}
+
+.project {
+    width: 30%; /* Adjust width of project sections */
+    margin-bottom: 20px; /* Add margin between project sections */
+}
+
+.project-info {
+    position: relative; /* Positioning context for project description */
+}
+
+.project-info img {
+    width: 100%; /* Make images fill their container */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+.project-info p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+    color: white;
+    padding: 10px;
+    margin: 0;
+    border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
+    border-bottom-right-radius: 10px;
+}
+
+/* Hover effect to indicate clickable project */
+.project a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
