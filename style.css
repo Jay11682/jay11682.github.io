@@ -37,7 +37,7 @@ body {
 
 /* Style page content */
 .main {
-    margin-left: 260px; /* Start 240px from the left */
+    margin-left: 23%; /* Start 240px from the left */
     padding: 20px;
     font-size: 20px;
     display: flex;
