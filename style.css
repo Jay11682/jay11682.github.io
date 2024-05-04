@@ -35,7 +35,7 @@
     font-size: 20px;
     display: flex;
     height: 100%;
-    justify-content: space-between; /* Adjusted property */
+    justify-content: space-around;
 }
 
 .split {
@@ -124,22 +124,17 @@ footer ul li:not(:last-child) {
 h1 {
     font-size: 40px;
 }
-h1 {
+h2 {
     font-size: 30px;
 }
 
 .project {
-    width: calc(50% - 20px); /* Adjust width of project sections (50% minus margin) */
-    margin: 10px; /* Add margin between project sections */
-    overflow: hidden; /* Hide overflowing content */
+    width: 30%; /* Adjust width of project sections */
+    margin-bottom: 20px; /* Add margin between project sections */
 }
 
 .project-info {
-    background-color: #1E4D2B;
-    color: white; /* Background color for project info */
-    padding: 10px; /* Add padding to project info */
-    border-radius: 10px; /* Add border radius for rounded corners */
-    text-align: center; /* Center-align project info */
+    position: relative; /* Positioning context for project description */
 }
 
 .project-info img {
@@ -153,7 +148,7 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #f9f9f9;
+    background-color: #1E4D2B;
     color: white;
     margin: 0;
     border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
