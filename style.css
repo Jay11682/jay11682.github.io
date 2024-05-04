@@ -46,12 +46,12 @@
 
 /* Control the left side */
 .left {
-    background-color: #1E4D2B;
+    width: 35%
 }
 
 /* Control the right side */
 .right {
-    background-color: #1E4D2B;
+    width: 65%
 }
 
 /* If you want the content centered horizontally and vertically */
