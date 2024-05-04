@@ -30,31 +30,20 @@
 
 /* Style page content */
 .main {
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-}
-
-.text-section {
-    width: 50%; /* Set text section to half of the page width */
-}
-
-.about-section {
-    display: flex;
-    max-width: 1200px; /* Set maximum width for the section */
+    margin-left: 240px; /* Start 240px from the left */
+    padding: 20px;
+    font-size: 20px;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space evenly between flex items */
 }
 
 .text-column {
-    flex: 1; /* Take up remaining space */
-    margin-right: 20px; /* Margin on the right side */
+    flex: 1; /* Take up all available space */
+    margin-right: 20px; /* Add margin to the right */
 }
 
 .image-column {
-    flex: 1; /* Take up remaining space */
-}
-
-.image-column img {
-    max-width: 100%; /* Ensure the image doesn't exceed its container */
-    height: auto; /* Maintain aspect ratio */
+    width: calc(50% - 140px); /* Take up half of the remaining space, minus the space occupied by the sidenav */
 }
 
 footer {
