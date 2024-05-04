@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Snellings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F48T6LRJCS');
+    </script>
+    <body>
+</head>
+
+<div class="sidenav">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="extras/Jay_Snellings_Resume.docx" download>Resume</a>
+    <!-- Footer contents moved to the sidebar -->
+    <footer>
+        <ul>
+            <li><div class="email-section">
+                <img src="extras/envelope.png" alt="Email">
+                <a href="mailto:Jsnellings03@gmail.com">Jsnellings03@gmail.com</a>
+            </div></li>
+            <li><div class="email-section">
+                <img src="extras/phone.png" alt="Phone">
+                <a href="tel:720-308-5038">+1 (720) 308-5038</a>
+            </div></li>
+            <li><a href="https://www.linkedin.com/in/jay-snellings/" style="color: white;"><i class="fab fa-linkedin"></i>‎</a><a href="https://github.com/Jay11682" style="color: white;"><i class="fab fa-github"></i>‎</a></li>
+        </ul>
+        <p>&copy; 2024 Jay Snellings</p>
+        
+    </footer>
+</div>
+
+<main class="main">
+    <div class="split left">
+        <div class="centered">
+            <h1>Company Management Project</h1>
+            <h2>Langauges Used: Java, Javascript, and HTML</h2>
+            <p> Throughout my software testing class, we were tasked with creating a web company management system. Working in an scrum SDLC and using
+                GitHub Projects board to organize tasks, I worked in a team of 5 to create such a project. The system stores a company's
+                projects, workers, and qualifications held by its workers. A company manager could create new projects, workers, and qualifications, 
+                start and finish projects, and assign and unassign workers to a project.
+
+            </p>
+            <h2>How it Works</h2>
+            <p> There are underlying java classes for company, worker, qualification, and project. Each of these classes has methods which define things
+                like constructors, data transfer objects, and class specific functions for each class. These classes are linked up to the RestController 
+                class which connects the frontend to the backend with endpoints. For example if a user navigates to the /qualifications endpoint, a table
+                with all of the qualifications will be displayed.
+            </p>
+
+            <h2>What I Learned</h2>
+            <p> Throughout this project I continued to grow my teamwork and leadership capabilities. Many of my teammates were preoccupied with
+                other courses throughout this project so I stepepd up and did a lot of the administrative work like setting up meetings, creating
+                and maintaining the GitHub Project board, and ensuring the project was kept on track by encouraging teammates to complete work
+                throughout the sprint. I not only grew stronger in my Java, Javascript, and unit testing capabilities, I also learned a lot of new 
+                skills such as test automation with tools including PMD, Randoop, and EvoSuite.
+            </p>
+
+        </div>
+    </div>
+    <div class="split right">
+        <div class="centered">
+            <img src="extras/Project.png" alt="GPT Photo">
+            <img src="extras/Worker.png" alt="GPT Photo">
+            <img src="extras/Qualifications.png" alt="GPT Photo">
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

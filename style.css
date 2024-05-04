@@ -125,7 +125,7 @@ h1 {
     font-size: 40px;
 }
 h2 {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .project {
@@ -139,8 +139,11 @@ h2 {
 
 .project-info img {
     width: 100%; /* Make images fill their container */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+    max-width: 100%; /* Ensure images don't exceed their container's width */
+    max-height: 400px; /* Set a maximum height for the images */
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire container */
     border-radius: 10px; /* Add border radius for rounded corners */
-
 }
 
 .project-info p {
