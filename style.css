@@ -49,12 +49,12 @@
 
 /* Control the left side */
 .left {
-    background-color: #111; /* Add background color */
+    width: 40%; /* Add background color */
 }
 
 /* Control the right side */
 .right {
-    background-color: #111; /* Add background color */
+    width: 60%; /* Add background color */
 }
 
 /* Style the image inside the centered container */
