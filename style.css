@@ -5,10 +5,9 @@ body {
     font-variant: normal;
 }
 
-/* Sidebar menu */
+/* The sidebar menu */
 .sidenav {
-    height: auto; /* Change height to auto */
-    min-height: 100%; /* Ensure the sidebar covers the full height */
+    height: 100%;
     width: 19%;
     position: fixed;
     z-index: 1;
@@ -20,13 +19,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center horizontally */
+    z-index: 2;
 }
 
-/* Navigation menu links */
+/* The navigation menu links */
 .sidenav a {
     padding: 10px 8px;
     text-decoration: none;
-    font-size: 20px; /* Decrease font size for mobile */
+    font-size: 40px;
     color: #fff;
     display: block;
 }
@@ -70,11 +70,10 @@ body {
 /* Style the image inside the centered container */
 .centered img {
     max-width: 100%;
-    height: auto; /* Ensure aspect ratio is maintained */
+    max-height: 80%; /* Reduce the height of the image */
     border-radius: 10px;
 }
 
-/* Footer */
 footer {
     text-align: center;
     background-color: #1E4D2B;
@@ -83,45 +82,92 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    margin-top: 20px; /* Add margin top */
+    z-index: 1;
 }
 
-/* Email section */
-.email-section {
-    display: flex;
-    flex-wrap: wrap; /* Allow email to wrap onto a new line */
-    justify-content: center; /* Center email horizontally */
-}
-
-.email-section img {
-    margin-right: 5px; /* Add margin between email icon and text */
-}
-
-.email-section a {
-    font-size: 14px; /* Decrease font size for mobile */
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-/* Ensure footer links stack vertically on mobile */
 footer ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
 }
 
 footer ul li {
-    font-size: 14px; /* Decrease font size for mobile */
+    font-size: 12px;
+    display: inline;
     margin-right: 10px;
-    margin-bottom: 10px;
     text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.email-section img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.email-section a {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    flex-wrap: wrap;
+    padding: 5px 10px; /* Add padding */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+footer p {
+    color: white;
+}
+
+/* Remove bullet points from footer links */
+footer ul li {
+    list-style-type: none;
+    margin-bottom: 20px;
 }
 
 /* Add spacing between footer links */
 footer ul li:not(:last-child) {
     margin-right: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 25px;
+}
+
+.project {
+    width: 90%; /* Adjust width of project sections */
+    margin-bottom: 20px; /* Add margin between project sections */
+}
+
+.project-info {
+    position: relative; /* Positioning context for project description */
+}
+
+.project-info img {
+    width: 100%; /* Make images fill their container */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+    max-width: 100%; /* Ensure images don't exceed their container's width */
+    max-height: 355px; /* Set a maximum height for the images */
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire container */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+.project-info p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1E4D2B;
+    color: white;
+    margin: 0;
+    border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
+    border-bottom-right-radius: 10px;
+    text-align: center;
 }
 
 /* Hover effect to indicate clickable project */
