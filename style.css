@@ -147,11 +147,9 @@ h1 {
     width: 100%;
     background-color: #1E4D2B;
     color: white;
-    padding: 10px;
     margin: 0;
     border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
     border-bottom-right-radius: 10px;
-    align-items: center;
 }
 
 /* Hover effect to indicate clickable project */
