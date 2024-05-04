@@ -137,6 +137,7 @@ h1 {
 .project-info img {
     width: 100%; /* Make images fill their container */
     border-radius: 10px; /* Add border radius for rounded corners */
+
 }
 
 .project-info p {
@@ -144,12 +145,13 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+    background-color: #1E4D2B;
     color: white;
     padding: 10px;
     margin: 0;
     border-bottom-left-radius: 10px; /* Add border radius for bottom corners */
     border-bottom-right-radius: 10px;
+    align-items: center;
 }
 
 /* Hover effect to indicate clickable project */
