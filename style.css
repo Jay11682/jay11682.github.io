@@ -1,8 +1,12 @@
-/* The sidebar menu */
-.sidenav {
+/* General body styles */
+body {
     font-family: Verdana, Geneva, sans-serif;
     font-style: normal;
     font-variant: normal;
+}
+
+/* The sidebar menu */
+.sidenav {
     height: 100%;
     width: 220px;
     position: fixed;
@@ -19,9 +23,6 @@
 
 /* The navigation menu links */
 .sidenav a {
-    font-family: Verdana, Geneva, sans-serif;
-    font-style: normal;
-    font-variant: normal;
     padding: 10px 8px;
     text-decoration: none;
     font-size: 40px;
@@ -36,9 +37,6 @@
 
 /* Style page content */
 .main {
-    font-family: Verdana, Geneva, sans-serif;
-    font-style: normal;
-    font-variant: normal;
     margin-left: 240px; /* Start 240px from the left */
     padding: 20px;
     font-size: 20px;
