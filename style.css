@@ -39,43 +39,29 @@
 
 .split {
     height: 100%;
-    width: 90%;
+    width: 50%;
     overflow-x: hidden;
     padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Control the left side */
 .left {
-    width: 35%
+    background-color: #111; /* Add background color */
 }
 
 /* Control the right side */
 .right {
-    width: 65%
+    background-color: #111; /* Add background color */
 }
 
-/* If you want the content centered horizontally and vertically */
-.centered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-/* Style the image inside the centered container, if needed */
+/* Style the image inside the centered container */
 .centered img {
-    width: 100%;
-    max-width: 400px; /* Adjust as needed */
+    max-width: 100%;
+    max-height: 100%; /* Adjust to fill more space */
     border-radius: 10px;
-}
-
-.text-column {
-    flex: 1; /* Take up all available space */
-    margin-right: 20px; /* Add margin to the right */
-}
-
-.image-column {
-    width: calc(50% - 280px); /* Take up half of the remaining space, minus the space occupied by the sidenav and the margin on the left */
 }
 
 footer {
