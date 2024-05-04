@@ -30,9 +30,15 @@
 
 /* Style page content */
 .main {
-    margin-left: 240px;
+    display: flex; /* Use flexbox to align items */
+    align-items: flex-start; /* Align items at the top */
+    justify-content: space-between; /* Space out the items */
     padding: 20px;
     font-size: 20px;
+}
+
+.text-section {
+    width: 50%; /* Set text section to half of the page width */
 }
 
 footer {
