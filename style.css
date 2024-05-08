@@ -198,7 +198,7 @@ h2 {
     font-size: 17px;
 }
 
-.topnav a:hover {
+.topnav a:hover, .topnav a.active {
     background-color: #ddd;
     color: black;
 }
@@ -208,8 +208,12 @@ h2 {
 }
 
 @media screen and (max-width: 768px) {
-    .sidenav {display: none;}
-    .topnav {display: block;}
+    .sidenav {
+        display: none;
+    }
+    .topnav {
+        display: block;
+    }
     .topnav .icon {
         float: right;
         display: block;
@@ -225,5 +229,26 @@ h2 {
         display: block;
         text-align: left;
     }
-    .main {margin-left: 0;}
+    .main {
+        margin-left: 0; /* Full width on mobile */
+    }
+    .split, .left, .right {
+        width: 100%; /* Full width for all split sections on mobile */
+        display: block; /* Stack vertically */
+    }
+}
+
+/* Adjustments for non-mobile views, ensuring existing desktop styles are kept */
+@media screen and (min-width: 769px) {
+    .sidenav {
+        display: block; /* Ensure sidebar is visible on desktop */
+        width: 250px; /* Or your specified width */
+    }
+    .main {
+        margin-left: 250px; /* Adjusted for sidebar width */
+    }
+    .split, .left, .right {
+        display: flex;
+        flex-direction: row; /* Side by side */
+    }
 }
