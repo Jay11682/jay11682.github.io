@@ -213,9 +213,11 @@ h2 {
     }
     .topnav {
         display: block;
+        position: fixed;
+        width: 100%;
+        top: 0;
     }
-    .topnav .icon {
-        float: right;
+    .topnav a.icon {
         display: block;
     }
     .topnav.responsive {position: relative;}
@@ -230,25 +232,14 @@ h2 {
         text-align: left;
     }
     .main {
-        margin-left: 0; /* Full width on mobile */
+        margin-left: 0;
+        margin-top: 60px; /* Give space for the fixed topnav */
     }
-    .split, .left, .right {
-        width: 100%; /* Full width for all split sections on mobile */
-        display: block; /* Stack vertically */
+    .split {
+        flex-direction: column; /* Stacks the flex items vertically */
+        width: 100%; /* Full width */
     }
-}
-
-/* Adjustments for non-mobile views, ensuring existing desktop styles are kept */
-@media screen and (min-width: 769px) {
-    .sidenav {
-        display: block; /* Ensure sidebar is visible on desktop */
-        width: 250px; /* Or your specified width */
-    }
-    .main {
-        margin-left: 250px; /* Adjusted for sidebar width */
-    }
-    .split, .left, .right {
-        display: flex;
-        flex-direction: row; /* Side by side */
+    .left, .right {
+        width: 100%; /* Adjust width to full under mobile view */
     }
 }
