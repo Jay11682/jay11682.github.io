@@ -181,24 +181,28 @@ h2 {
     right: 0;
 }
 
-/* Hide the top navigation by default and only show it in mobile view */
+/* Additional styles for top navigation on mobile */
 .topnav {
     display: none;
     background-color: #1E4D2B;
     overflow: hidden;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
 }
 
-.topnav a:hover, .topnav a.active {
+.topnav a:hover {
     background-color: #ddd;
     color: black;
 }
@@ -207,17 +211,15 @@ h2 {
     display: none;
 }
 
-@media screen and (max-width: 768px),(max-height: 400px) {
+@media screen and (max-width: 768px) {
     .sidenav {
-        display: none;
+        display: none; /* Hide sidebar on mobile */
     }
     .topnav {
-        display: block;
-        position: fixed;
-        width: 100%;
-        top: 0;
+        display: block; /* Show top navigation on mobile */
     }
-    .topnav a.icon {
+    .topnav .icon {
+        float: right;
         display: block;
     }
     .topnav.responsive {position: relative;}
@@ -232,15 +234,24 @@ h2 {
         text-align: left;
     }
     .main {
-        margin-left: 0;
-        margin-top: 60px; /* Give space for the fixed topnav */
+        margin-left: 0; /* Remove margin for mobile */
+        padding-top: 60px; /* Space for the top navigation */
     }
-    .split {
-        flex-direction: column; /* Stacks the flex items vertically */
-        width: 100%; /* Full width */
+    .split, .left, .right {
+        width: 100%; /* Full width for mobile */
+        display: block; /* Stack elements vertically */
     }
-    .left, .right {
-        width: 100%; /* Adjust width to full under mobile view */
-        display: block;
+}
+
+@media screen and (min-width: 769px) {
+    /* Ensures the sidebar is properly centered by resetting any potential overwrites */
+    .sidenav {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+        width: 19%; /* Maintain original width */
+    }
+    .main {
+        margin-left: 20%; /* Adjusted to prevent overlap with the sidenav */
     }
 }
