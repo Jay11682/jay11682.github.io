@@ -207,7 +207,7 @@ h2 {
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px),(max-height: 400px) {
     .sidenav {
         display: none;
     }
@@ -241,5 +241,6 @@ h2 {
     }
     .left, .right {
         width: 100%; /* Adjust width to full under mobile view */
+        display: block;
     }
 }
