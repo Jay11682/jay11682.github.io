@@ -217,6 +217,10 @@ h2 {
     }
     .topnav {
         display: block; /* Show top navigation on mobile */
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 10;
     }
     .topnav .icon {
         float: right;
@@ -240,6 +244,18 @@ h2 {
     .split, .left, .right {
         width: 100%; /* Full width for mobile */
         display: block; /* Stack elements vertically */
+        padding-top: 20px; /* Ensure padding is consistent */
+        align-items: center; /* Center content vertically for aesthetic purposes */
+        justify-content: center; /* Center content horizontally */
+    }
+    .centered {
+        text-align: center; /* Center text and images in .centered */
+        padding: 10px; /* Add padding around content for spacing */
+    }
+    .centered img {
+        max-width: 100%; /* Ensure images do not exceed their container's width */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 10px; /* Preserve rounded corners */
     }
 }
 
@@ -250,8 +266,23 @@ h2 {
         flex-direction: column;
         align-items: center; /* Center content horizontally */
         width: 19%; /* Maintain original width */
+        height: 100%; /* Full height */
     }
     .main {
-        margin-left: 20%; /* Adjusted to prevent overlap with the sidenav */
+        margin-left: 250px; /* Adjusted to prevent overlap with the sidenav */
+    }
+    .split {
+        display: flex;
+        width: 55%; /* Maintain width settings from your original CSS */
+        height: 100%;
+        align-items: center; /* Center content vertically */
+        justify-content: center; /* Center content horizontally */
+    }
+    .left {
+        width: 55%; /* Adjust width to match split */
+    }
+    .right {
+        width: 45%; /* Adjust width to match split */
+        padding-top: 20px; /* Ensure padding is consistent */
     }
 }
