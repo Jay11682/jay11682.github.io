@@ -240,6 +240,7 @@ h2 {
     .main {
         margin-left: 0; /* Remove margin for mobile */
         padding-top: 60px; /* Space for the top navigation */
+        display: block;
     }
     .split {
         flex-direction: column; /* Stack elements vertically */
@@ -251,6 +252,7 @@ h2 {
     .left, .right {
         width: 100%; /* Full width for each section on mobile */
         padding: 10px 0; /* Add vertical padding for spacing */
+        display: block;
     }
     .centered {
         text-align: center; /* Center text and images in .centered */
