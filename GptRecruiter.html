@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jay Snellings - Web Chess Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
@@ -16,74 +16,80 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body>
-<div class="sidenav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <footer>
-        <ul>
-            <li><div class="email-section">
-                <img src="extras/envelope.png" alt="Email">
-                <a href="mailto:Jsnellings03@gmail.com">Jsnellings03@gmail.com</a>
-            </div></li>
-            <li><div class="email-section">
-                <img src="extras/phone.png" alt="Phone">
-                <a href="tel:720-308-5038">+1 (720) 308-5038</a>
-            </div></li>
-            <li><a href="https://www.linkedin.com/in/jay-snellings/" style="color: white;"><i class="fab fa-linkedin"></i>‎</a><a href="https://github.com/Jay11682" style="color: white;"><i class="fab fa-github"></i>‎</a></li>
+<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+        <div class="text-2xl font-bold">Jay Snellings</div>
+        <nav>
+            <a href="index.html" class="mx-2 hover:underline">Home</a>
+            <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
+            <a href="#contact" class="mx-2 hover:underline">Contact</a>
+        </nav>
+    </header>
+
+    <main class="p-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <h1 class="text-4xl font-bold">GPT Recruiter Project</h1>
+                <h2 class="text-2xl font-bold mt-4">Languages Used: Python</h2>
+                <p class="mt-4"> During my time at PeerSource, I was asked by my manager if I could create an AI system to help recruiters 
+                    look through hundreds of resumes. Working with my boss to gather requirements, I created a system that rates
+                    candidates on a scale from 1 to 10 on how good of a fit their resume is for a job posting. This score helps
+                    recruiters save time and focus on the potentially better candidates. All resumes are still viewed by a real
+                    person, but there is a feature available to sort out underqualified candidates who score under a certain threshold.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">How it Works</h2>
+                <p class="mt-4"> The script iterates through an outlook inbox which all of our incoming linkedin applicants go into. All of our LinkedIn
+                    jobs have a name which corresponds with a name in a dictionary file that contains all of our job descriptions. The candidate's 
+                    resume is downloaded and it's text is read into the system. For each email, ChatGPT is given the candidate's resume and the job 
+                    description for the job they applied to and asked to act as a recruiter and score the person on their fit (the actual prompt is much 
+                    more complicated). The email is then updated to reflect this score. Optionally the person can be sent automatically to a rejection
+                    inbox if they fall below a certain score. I also created a simple GUI using tkinter (Shown above.) so our recruiters and my manager could easily
+                    run my script and add new jobs to the dictionary without having to go into a terminal. The reasoning for the score is attached to the email body
+                    body and the end result is pictured.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
+                <p class="mt-4"> Throughout this project I learned how to gather project requirements, work cross functionally with recruiters, and translate
+                    requirements into actionable code. I learned how to use a lot of new Python tools such as win32com to connect to outlook and how to 
+                    send queries to ChatGPT's API.
+                </p>
+            </div>
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <div class="flex flex-col items-center">
+                    <img src="extras/RunScripts.png" alt="RunScripts">
+                    <img src="extras/gptRecruiter.png" alt="GPT Photo">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4">
+        <div id="contact"></div>
+        <ul class="flex justify-center space-x-4 mb-4">
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
+                    <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
+                    <a href="tel:720-308-5038" class="hover:underline">+1 (720) 308-5038</a>
+                </div>
+            </li>
+            <li class="flex space-x-2">
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github"></i></a>
+            </li>
         </ul>
-        <p>&copy; 2024 Jay Snellings</p>
+        <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
     </footer>
-</div>
 
-<div class="topnav" id="myTopnav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
-
-<main class="main">
-    <div class="split left">
-        <div class="centered">
-            <h1>GPT Recruiter</h1>
-            <h2>Langauges Used: Python</h2>
-            <p> During my time at PeerSource, I was asked by my manager if I could create an AI system to help recruiters 
-                look through hundreds of resumes. Working with my boss to gather requirements, I created a system that rates
-                candidates on a scale from 1 to 10 on how good of a fit their resume is for a job posting. This score helps
-                recruiters save time and focus on the potentially better candidates. All resumes are still viewed by a real
-                person, but there is a feature available to sort out underqualified candidates who score under a certain threshold.
-            </p>
-            <h2>How it Works</h2>
-            <p> The script iterates through an outlook inbox which all of our incoming linkedin applicants go into. All of our LinkedIn
-                jobs have a name which corresponds with a name in a dictionary file that contains all of our job descriptions. The candidate's 
-                resume is downloaded and it's text is read into the system. For each email, ChatGPT is given the candidate's resume and the job 
-                description for the job they applied to and asked to act as a recruiter and score the person on their fit (the actual prompt is much 
-                more complicated). The email is then updated to reflect this score. Optionally the person can be sent automatically to a rejection
-                inbox if they fall below a certain score. I also created a simple GUI using tkinter (Shown above.) so our recruiters and my manager could easily
-                run my script and add new jobs to the dictionary without having to go into a terminal. The reasoning for the score is attached to the email body
-                body and the end result is pictured.
-            </p>
-            <h2>Skills Learned</h2>
-            <p> Throughout this project I learned how to gather project requirements, work cross functionally with recruiters, and translate
-                requirements into actionable code. I learned how to use a lot of new Python tools such as win32com to connect to outlook and how to 
-                send queries to ChatGPT's API.
-            </p>
-
-
-
-        </div>
-    </div>
-    <div class="split right">
-        <div class="centered">
-            <img src="extras/RunScripts.png" alt="RunScripts">
-            <img src="extras/gptRecruiter.png" alt="GPT Photo">
-        </div>
-    </div>
-</main>
-
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('myTopnav');
+            nav.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
