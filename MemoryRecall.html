@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings - Web Chess Game</title>
+    <title>Jay Snellings - Memory Recall Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkblue: '#303a50',
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
     <script>
@@ -16,8 +27,8 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
         <div class="text-2xl font-bold">Jay Snellings</div>
         <nav>
             <a href="index.html" class="mx-2 hover:underline">Home</a>
@@ -28,19 +39,18 @@
 
     <main class="p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <h1 class="text-4xl font-bold">Improving Memory Recall Experiment</h1>
-                <h2 class="text-2xl font-bold mt-4">Langauges/Tools Used: C#, Jira, and Unity</h2>
+                <h2 class="text-2xl font-bold mt-4">Languages/Tools Used: C#, Jira, and Unity</h2>
                 <p class="mt-4"> Working in a team of 4, we developed a project in Unity which studied which font, font size, font color, and other settings gave 
                     participants the best memory recall when taking a vocabulary quiz. This experiment was originally administered through
-                    a 2D interface, but was translated into a 3D VR project late in development as the cprofessor encouraged this.
+                    a 2D interface, but was translated into a 3D VR project late in development as the professor encouraged this.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">How it Works</h2>
-                <br class="mt-4"> The Unity project was created to conduct an experiment on the participant by allowing them to pick what font, color, and size they
+                <p class="mt-4"> The Unity project was created to conduct an experiment on the participant by allowing them to pick what font, color, and size they
                     think would best help their memory recall. They were then shown vocabulary words and given a quiz using the settings they chose, another 
-                    quiz using the "best" settings we researched, and finally a test using a mix of the best settings and the use defined settings.
-                    The users accuracy and speed on these quizzes were recorded.</br>
-                    The mixed settings appeared to perform best in terms of accuracy, while the user-selected settings generally provided the 
+                    quiz using the "best" settings we researched, and finally a test using a mix of the best settings and the user-defined settings.
+                    The users' accuracy and speed on these quizzes were recorded. The mixed settings appeared to perform best in terms of accuracy, while the user-selected settings generally provided the 
                     best speed metric for participants.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
@@ -48,7 +58,7 @@
                     to conduct an experiment. 
                 </p>
             </div>
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/Memory.png" alt="Memory Photo">
                 </div>

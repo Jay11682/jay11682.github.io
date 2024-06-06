@@ -6,6 +6,17 @@
     <title>Jay Snellings - Web Chess Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkblue: '#303a50',
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
     <script>
@@ -16,8 +27,8 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
         <div class="text-2xl font-bold">Jay Snellings</div>
         <nav>
             <a href="index.html" class="mx-2 hover:underline">Home</a>
@@ -28,10 +39,10 @@
 
     <main class="p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <h1 class="text-4xl font-bold">Web Chess Game</h1>
                 <h2 class="text-2xl font-bold mt-4">Languages/Tools Used: Java and GitHub Projects</h2>
-                <p class="mt-4"> Working in a Scrum SDLC on a team of 4 other students, designed a chess web application similar to <a class="hover:underline" href=”https:www.chess.com/”>chess.com</a>. The project focused
+                <p class="mt-4"> Working in a Scrum SDLC on a team of 4 other students, designed a chess web application similar to <a class="hover:underline" href="https://www.chess.com/">chess.com</a>. The project focused
                     on building the system from the ground up by translating customer requirements into user stories, modeling domains,
                     and classes. We were not expected to complete the project in its entirety because of its large scale, so there was a focus 
                     placed on designing and redesigning the system as we learned about design patterns and handle coupling and cohesion in the design. We were given 
@@ -48,7 +59,7 @@
                     the ground up. I also continued to grow my experience with working in a Scrum team.
                 </p>
             </div>
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/ChessUI.png" alt="Chess UI" class="mb-4">
                     <img src="extras/ChessProjectBoard.png" alt="Chess Project Board">
@@ -79,12 +90,5 @@
         </ul>
         <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById('myTopnav');
-            nav.classList.toggle('hidden');
-        }
-    </script>
 </body>
 </html>
