@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jay Snellings - Web Chess Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
@@ -16,69 +16,74 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body>
-<div class="sidenav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <footer>
-        <ul>
-            <li><div class="email-section">
-                <img src="extras/envelope.png" alt="Email">
-                <a href="mailto:Jsnellings03@gmail.com">Jsnellings03@gmail.com</a>
-            </div></li>
-            <li><div class="email-section">
-                <img src="extras/phone.png" alt="Phone">
-                <a href="tel:720-308-5038">+1 (720) 308-5038</a>
-            </div></li>
-            <li><a href="https://www.linkedin.com/in/jay-snellings/" style="color: white;"><i class="fab fa-linkedin"></i>‎</a><a href="https://github.com/Jay11682" style="color: white;"><i class="fab fa-github"></i>‎</a></li>
+<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+        <div class="text-2xl font-bold">Jay Snellings</div>
+        <nav>
+            <a href="index.html" class="mx-2 hover:underline">Home</a>
+            <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
+            <a href="#contact" class="mx-2 hover:underline">Contact</a>
+        </nav>
+    </header>
+
+    <main class="p-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <h1 class="text-4xl font-bold">Improving Memory Recall Experiment</h1>
+                <h2 class="text-2xl font-bold mt-4">Langauges/Tools Used: C#, Jira, and Unity</h2>
+                <p class="mt-4"> Working in a team of 4, we developed a project in Unity which studied which font, font size, font color, and other settings gave 
+                    participants the best memory recall when taking a vocabulary quiz. This experiment was originally administered through
+                    a 2D interface, but was translated into a 3D VR project late in development as the cprofessor encouraged this.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">How it Works</h2>
+                <br class="mt-4"> The Unity project was created to conduct an experiment on the participant by allowing them to pick what font, color, and size they
+                    think would best help their memory recall. They were then shown vocabulary words and given a quiz using the settings they chose, another 
+                    quiz using the "best" settings we researched, and finally a test using a mix of the best settings and the use defined settings.
+                    The users accuracy and speed on these quizzes were recorded.</br>
+                    The mixed settings appeared to perform best in terms of accuracy, while the user-selected settings generally provided the 
+                    best speed metric for participants.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
+                <p class="mt-4"> I learned the basics of using Unity and C# throughout the creation of the experiment and also grew in my ability to work in a team 
+                    to conduct an experiment. 
+                </p>
+            </div>
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <div class="flex flex-col items-center">
+                    <img src="extras/Memory.png" alt="Memory Photo">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4">
+        <div id="contact"></div>
+        <ul class="flex justify-center space-x-4 mb-4">
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
+                    <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
+                    <a href="tel:720-308-5038" class="hover:underline">+1 (720) 308-5038</a>
+                </div>
+            </li>
+            <li class="flex space-x-2">
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github"></i></a>
+            </li>
         </ul>
-        <p>&copy; 2024 Jay Snellings</p>
+        <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
     </footer>
-</div>
 
-<div class="topnav" id="myTopnav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
-
-<main class="main">
-    <div class="split left">
-        <div class="centered">
-            <h1>Improving Memory Recall Experiment</h1>
-            <h2>Langauges/Tools Used: C#, Jira, and Unity</h2>
-            <p> Working in a team of 4, we developed a project in Unity which studied which font, font size, font color, and other settings gave 
-                participants the best memory recall when taking a vocabulary quiz. This experiment was originally administered through
-                a 2D interface, but was translated into a 3D VR project late in development as the cprofessor encouraged this.
-            </p>
-            <h2>How it Works</h2>
-            <p> The Unity project was created to conduct an experiment on the participant by allowing them to pick what font, color, and size they
-                think would best help their memory recall. They were then shown vocabulary words and given a quiz using the settings they chose, another 
-                quiz using the "best" settings we researched, and finally a test using a mix of the best settings and the use defined settings.
-                The users accuracy and speed on these quizzes were recorded.
-            </p>
-            <p>The mixed settings appeared to perform best in terms of accuracy, while the user-selected settings generally provided the 
-                best speed metric for participants.</p>
-            <h2>Skills Learned</h2>
-            <p> I learned the basics of using Unity and C# throughout the creation of the experiment and also grew in my ability to work in a team 
-                to conduct an experiment. 
-            </p>
-
-
-
-        </div>
-    </div>
-    <div class="split right">
-        <div class="centered">
-            <img src="extras/ChessUI.png" alt="Chess UI">
-            <img src="extras/ChessProjectBoard.png" alt="Chess Project Board">
-        </div>
-    </div>
-</main>
-
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('myTopnav');
+            nav.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>

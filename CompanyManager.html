@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jay Snellings - Web Chess Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
@@ -16,71 +16,78 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body>
-<div class="sidenav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <footer>
-        <ul>
-            <li><div class="email-section">
-                <img src="extras/envelope.png" alt="Email">
-                <a href="mailto:Jsnellings03@gmail.com">Jsnellings03@gmail.com</a>
-            </div></li>
-            <li><div class="email-section">
-                <img src="extras/phone.png" alt="Phone">
-                <a href="tel:720-308-5038">+1 (720) 308-5038</a>
-            </div></li>
-            <li><a href="https://www.linkedin.com/in/jay-snellings/" style="color: white;"><i class="fab fa-linkedin"></i>‎</a><a href="https://github.com/Jay11682" style="color: white;"><i class="fab fa-github"></i>‎</a></li>
+<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+        <div class="text-2xl font-bold">Jay Snellings</div>
+        <nav>
+            <a href="index.html" class="mx-2 hover:underline">Home</a>
+            <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
+            <a href="#contact" class="mx-2 hover:underline">Contact</a>
+        </nav>
+    </header>
+
+    <main class="p-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <h1 class="text-4xl font-bold">Company Management Project</h1>
+                <h2 class="text-2xl font-bold mt-4">Langauges/Tools Used: Java, Javascript, HTML, and GitHub Projects</h2>
+                <p class="mt-4"> Throughout my software testing class, we were tasked with creating a web company management system. Working in an scrum SDLC and using
+                    GitHub Projects board to organize tasks, I worked in a team of 5 to create such a project. The system stores a company's
+                    projects, workers, and qualifications held by its workers. A company manager could create new projects, workers, and qualifications, 
+                    start and finish projects, and assign and unassign workers to a project.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">How it Works</h2>
+                <p class="mt-4"> There are underlying java classes for company, worker, qualification, and project. Each of these classes has methods which define things
+                    like constructors, data transfer objects, and class specific functions for each class. These classes are linked up to the RestController 
+                    class which connects the frontend to the backend with endpoints. For example if a user navigates to the /qualifications endpoint, a table
+                    with all of the qualifications will be displayed.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
+                <p class="mt-4"> Throughout this project I continued to grow my teamwork and leadership capabilities. Many of my teammates were preoccupied with
+                    other courses throughout this project so I stepepd up and did a lot of the administrative work like setting up meetings, creating
+                    and maintaining the GitHub Project board, and ensuring the project was kept on track by encouraging teammates to complete work
+                    throughout the sprint. I not only grew stronger in my Java, Javascript, and unit testing capabilities, I also learned a lot of new 
+                    skills such as test automation with tools including PMD, Randoop, and EvoSuite.
+                </p>
+            </div>
+            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+                <div class="flex flex-col items-center">
+                    <img src="extras/Project.png" alt="GPT Photo">
+                <img src="extras/Worker.png" alt="GPT Photo">
+                <img src="extras/Qualifications.png" alt="GPT Photo">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4">
+        <div id="contact"></div>
+        <ul class="flex justify-center space-x-4 mb-4">
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
+                    <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
+                    <a href="tel:720-308-5038" class="hover:underline">+1 (720) 308-5038</a>
+                </div>
+            </li>
+            <li class="flex space-x-2">
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github"></i></a>
+            </li>
         </ul>
-        <p>&copy; 2024 Jay Snellings</p>
+        <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
     </footer>
-</div>
 
-<div class="topnav" id="myTopnav">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="extras/JaySnellingsResume.docx" download>Resume</a>
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
-<main class="main">
-    <div class="split left">
-        <div class="centered">
-            <h1>Company Management Project</h1>
-            <h2>Langauges/Tools Used: Java, Javascript, HTML, and GitHub Projects</h2>
-            <p> Throughout my software testing class, we were tasked with creating a web company management system. Working in an scrum SDLC and using
-                GitHub Projects board to organize tasks, I worked in a team of 5 to create such a project. The system stores a company's
-                projects, workers, and qualifications held by its workers. A company manager could create new projects, workers, and qualifications, 
-                start and finish projects, and assign and unassign workers to a project.
-
-            </p>
-            <h2>How it Works</h2>
-            <p> There are underlying java classes for company, worker, qualification, and project. Each of these classes has methods which define things
-                like constructors, data transfer objects, and class specific functions for each class. These classes are linked up to the RestController 
-                class which connects the frontend to the backend with endpoints. For example if a user navigates to the /qualifications endpoint, a table
-                with all of the qualifications will be displayed.
-            </p>
-
-            <h2>What I Learned</h2>
-            <p> Throughout this project I continued to grow my teamwork and leadership capabilities. Many of my teammates were preoccupied with
-                other courses throughout this project so I stepepd up and did a lot of the administrative work like setting up meetings, creating
-                and maintaining the GitHub Project board, and ensuring the project was kept on track by encouraging teammates to complete work
-                throughout the sprint. I not only grew stronger in my Java, Javascript, and unit testing capabilities, I also learned a lot of new 
-                skills such as test automation with tools including PMD, Randoop, and EvoSuite.
-            </p>
-
-        </div>
-    </div>
-    <div class="split right">
-        <div class="centered">
-            <img src="extras/Project.png" alt="GPT Photo">
-            <img src="extras/Worker.png" alt="GPT Photo">
-            <img src="extras/Qualifications.png" alt="GPT Photo">
-        </div>
-    </div>
-</main>
-
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('myTopnav');
+            nav.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
