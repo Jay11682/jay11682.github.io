@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings - Web Chess Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkblue: '#303a50',
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-F48T6LRJCS');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-zinc-800">
+<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
         <div class="text-2xl font-bold">Jay Snellings</div>
         <nav>
             <a href="index.html" class="mx-2 hover:underline">Home</a>
@@ -28,7 +36,7 @@
 
     <main class="p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <h1 class="text-4xl font-bold">Company Management Project</h1>
                 <h2 class="text-2xl font-bold mt-4">Langauges/Tools Used: Java, Javascript, HTML, and GitHub Projects</h2>
                 <p class="mt-4"> Throughout my software testing class, we were tasked with creating a web company management system. Working in an scrum SDLC and using
@@ -50,11 +58,11 @@
                     skills such as test automation with tools including PMD, Randoop, and EvoSuite.
                 </p>
             </div>
-            <div class="bg-zinc-200 dark:bg-zinc-700 p-4 rounded-lg">
+            <div class="bg-zinc-200 dark:bg-darkblue p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/Project.png" alt="GPT Photo">
-                <img src="extras/Worker.png" alt="GPT Photo">
-                <img src="extras/Qualifications.png" alt="GPT Photo">
+                    <img src="extras/Worker.png" alt="GPT Photo">
+                    <img src="extras/Qualifications.png" alt="GPT Photo">
                 </div>
             </div>
         </div>
