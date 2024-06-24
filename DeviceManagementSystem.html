@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Snellings - User Management System Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkblue: '#303a50',darkblue2: '#3D4A65'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F48T6LRJCS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F48T6LRJCS');
+    </script>
+</head>
+<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
+        <div class="text-2xl font-bold">Jay Snellings</div>
+        <nav>
+            <a href="index.html" class="mx-2 hover:underline">Home</a>
+            <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
+            <a href="#contact" class="mx-2 hover:underline">Contact</a>
+        </nav>
+    </header>
+
+    <main class="p-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+                <h1 class="text-4xl font-bold">User Device Management System Project</h1>
+                <h2 class="text-2xl font-bold mt-4">Languages/Tools Used: MySQL, Java, JavaScript, HTML, and Apache TomCat</h2>
+                <p class="mt-4"> In collaboration with a classmate, we developed a web-based user device management system. This system allows users to interact with a MySQL database through a front-end 
+                    interface built with Java servlets.
+
+                    Users can perform various operations such as searching for existing users, creating new users, updating current user information, deleting users, and updating device usage information.
+                    
+                    To start, we set up a MySQL database and created a schema to store information in three tables: Users, Uses, and DeviceType. We were provided with data to populate these tables as part 
+                    of the project.
+                    
+                    We then created Java classes for each table (Users, Uses, and DeviceType) that included constructors, getters, and setters for their respective fields, such as userIds and deviceIds.
+                    
+                    For functionality, we implemented Java servlets for each operation (e.g., adding users, deleting users). These servlets connect the database to the front end and execute SQL statements 
+                    based on user requests.
+                    
+                    The front end features a simple UI with textboxes that allow users to interact with the database. JavaScript captures user input and sends it to the appropriate Java servlet, where a 
+                    prepared SQL statement is executed on the database.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">How it Works</h2>
+                <p class="mt-4">  When a user connects to our web app, they are presented with text boxes for various actions: searching for existing users, creating a new user, updating current user information,
+                     deleting users, and updating device usage information.
+
+                    For example, if a user wants to add someone to the database, the JavaScript file first ensures that all necessary fields (such as UserID, UserName, and UserType) are filled in. Once validated,
+                     the inputted information is sent to the Java servlet responsible for adding users to the database.
+                    
+                    This servlet then executes a prepared statement like "INSERT INTO Users (UserID, UserName, UserType) VALUES (?, ?, ?)," with the placeholders being replaced by the values provided from the 
+                    JavaScript file. This process successfully adds a new user to the database.
+                    
+                    Each function in our web app follows a similar workflow, ensuring a consistent and efficient user experience.
+                </p>
+                <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
+                <p class="mt-4"> I learned how to set up and manage a MySQL database, use Apache Tomcat to deploy a web app, capture user inputs with JavaScript, and utilize Java servlets to execute 
+                    prepared SQL statements on the database.
+                </p>
+            </div>
+            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+                <div class="flex flex-col items-center">
+                    <img src="extras/UserManage.png" alt="User management photo">
+                </div>
+            </div>
+            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+                <div class="flex flex-col items-center">
+                    <img src="extras/JohnDoe.png" alt="John Doe">
+                </div>
+            </div>
+            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+                <div class="flex flex-col items-center">
+                    <img src="extras/JohnDoe2.png" alt="John Doe 2">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4">
+        <div id="contact"></div>
+        <ul class="flex justify-center space-x-4 mb-4">
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
+                    <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <img src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
+                    <a href="tel:720-308-5038" class="hover:underline">+1 (720) 308-5038</a>
+                </div>
+            </li>
+            <li class="flex space-x-2">
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-white"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-white"></i></a>
+            </li>
+        </ul>
+        <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
