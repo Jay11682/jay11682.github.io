@@ -11,7 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        darkblue: '#303a50',darkblue2: '#3D4A65'
+                        lightgray: '#f5f5f5',
+                        midgray: '#d1d5db',
+                        primary: '#4a5568'
                     }
                 }
             }
@@ -23,12 +25,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
-    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
+<body class="bg-lightgray text-primary">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray">
         <div class="text-2xl font-bold">Jay Snellings</div>
         <nav>
             <a href="index.html" class="mx-2 hover:underline">Home</a>
@@ -39,10 +40,10 @@
 
     <main class="p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <h1 class="text-4xl font-bold">User Device Management System Project</h1>
                 <h2 class="text-2xl font-bold mt-4">Languages/Tools Used: MySQL, Java, JavaScript, HTML, and Apache TomCat</h2>
-                <p class="mt-4"> In collaboration with a classmate, we developed a web-based user device management system. This system allows users to interact with a MySQL database through a front-end 
+                <p class="mt-4">In collaboration with a classmate, we developed a web-based user device management system. This system allows users to interact with a MySQL database through a front-end 
                     interface built with Java servlets.
 
                     Users can perform various operations such as searching for existing users, creating new users, updating current user information, deleting users, and updating device usage information.
@@ -59,7 +60,7 @@
                     prepared SQL statement is executed on the database.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">How it Works</h2>
-                <p class="mt-4">  When a user connects to our web app, they are presented with text boxes for various actions: searching for existing users, creating a new user, updating current user information,
+                <p class="mt-4">When a user connects to our web app, they are presented with text boxes for various actions: searching for existing users, creating a new user, updating current user information,
                      deleting users, and updating device usage information.
 
                     For example, if a user wants to add someone to the database, the JavaScript file first ensures that all necessary fields (such as UserID, UserName, and UserType) are filled in. Once validated,
@@ -71,21 +72,21 @@
                     Each function in our web app follows a similar workflow, ensuring a consistent and efficient user experience.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
-                <p class="mt-4"> I learned how to set up and manage a MySQL database, use Apache Tomcat to deploy a web app, capture user inputs with JavaScript, and utilize Java servlets to execute 
+                <p class="mt-4">I learned how to set up and manage a MySQL database, use Apache Tomcat to deploy a web app, capture user inputs with JavaScript, and utilize Java servlets to execute 
                     prepared SQL statements on the database.
                 </p>
             </div>
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/UserManage.png" alt="User management photo">
                 </div>
             </div>
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/JohnDoe.png" alt="John Doe">
                 </div>
             </div>
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/JohnDoe2.png" alt="John Doe 2">
                 </div>
@@ -109,8 +110,8 @@
                 </div>
             </li>
             <li class="flex space-x-2">
-                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-white"></i></a>
-                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-white"></i></a>
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
             </li>
         </ul>
         <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Snellings - Web Chess Game</title>
+    <title>Jay Snellings - GPT Recruiter Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <script>
@@ -11,7 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        darkblue: '#303a50',darkblue2: '#3D4A65'
+                        lightgray: '#f5f5f5',
+                        midgray: '#d1d5db',
+                        primary: '#4a5568'
                     }
                 }
             }
@@ -26,8 +28,8 @@
     gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
-    <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
+<body class="bg-lightgray text-primary">
+    <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray">
         <div class="text-2xl font-bold">Jay Snellings</div>
         <nav>
             <a href="index.html" class="mx-2 hover:underline">Home</a>
@@ -38,32 +40,32 @@
 
     <main class="p-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <h1 class="text-4xl font-bold">GPT Recruiter Project</h1>
                 <h2 class="text-2xl font-bold mt-4">Languages Used: Python</h2>
-                <p class="mt-4"> During my time at PeerSource, I was asked by my manager if I could create an AI system to help recruiters 
+                <p class="mt-4">During my time at PeerSource, I was asked by my manager if I could create an AI system to help recruiters 
                     look through hundreds of resumes. Working with my boss to gather requirements, I created a system that rates
                     candidates on a scale from 1 to 10 on how good of a fit their resume is for a job posting. All resumes are still viewed by a real
                     person, but this score helps recruiters save time during the prescreening process and focus their efforts on the potentially better 
                     candidates.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">How it Works</h2>
-                <p class="mt-4"> The script iterates through an outlook inbox which all of our incoming linkedin applicants go into. All of our LinkedIn
+                <p class="mt-4">The script iterates through an Outlook inbox which all of our incoming LinkedIn applicants go into. All of our LinkedIn
                     jobs have a name which corresponds with a name in a dictionary file that contains all of our job descriptions. The candidate's 
-                    resume is downloaded and it's text is read into the system. For each email, ChatGPT is given the candidate's resume and the job 
+                    resume is downloaded, and its text is read into the system. For each email, ChatGPT is given the candidate's resume and the job 
                     description for the job they applied to and asked to act as a recruiter and score the person on their fit (the actual prompt is much 
-                    more complicated). The email heading is then updated to show this score to recruiters. Optionally the person can be sent automatically to a rejection
-                    inbox if they fall below a certain score. I also created a simple GUI using tkinter (shown above) so our recruiters and my manager could easily
+                    more complicated). The email heading is then updated to show this score to recruiters. Optionally, the person can be sent automatically to a rejection
+                    inbox if they fall below a certain score. I also created a simple GUI using Tkinter (shown above) so our recruiters and my manager could easily
                     run my script and add new jobs to the dictionary without having to go into a terminal in VSCode. The reasoning for the score is also attached to the email body
                     to help recruiters understand why a person received a certain score.
                 </p>
                 <h2 class="text-2xl font-bold mt-4">Skills Learned</h2>
-                <p class="mt-4"> Throughout this project I learned how to gather project requirements, work cross functionally with recruiters, and translate
-                    requirements into actionable code. I learned how to use a lot of new Python tools such as win32com to connect to outlook and how to 
+                <p class="mt-4">Throughout this project, I learned how to gather project requirements, work cross-functionally with recruiters, and translate
+                    requirements into actionable code. I learned how to use a lot of new Python tools such as `win32com` to connect to Outlook and how to 
                     send queries to ChatGPT's API.
                 </p>
             </div>
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
+            <div class="bg-white border border-midgray p-4 rounded-lg">
                 <div class="flex flex-col items-center">
                     <img src="extras/RunScripts.png" alt="RunScripts">
                     <img src="extras/gptRecruiter.png" alt="GPT Photo">
@@ -88,8 +90,8 @@
                 </div>
             </li>
             <li class="flex space-x-2">
-                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-white"></i></a>
-                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-white"></i></a>
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
             </li>
         </ul>
         <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>

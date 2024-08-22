@@ -9,7 +9,9 @@
             theme: {
                 extend: {
                     colors: {
-                        darkblue: '#303a50',darkblue2: '#3D4A65'
+                        lightgray: '#f5f5f5',
+                        midgray: '#d1d5db',
+                        primary: '#4a5568'
                     }
                 }
             }
@@ -27,13 +29,13 @@
         gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
-    <div class="bg-white dark:bg-darkblue text-zinc-900 dark:text-zinc-100">
-        <header class="flex justify-between items-center p-4 sticky top-0 bg-white dark:bg-darkblue">
+<body class="bg-lightgray text-primary">
+    <div class="bg-lightgray text-primary">
+        <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray">
             <div class="text-2xl font-bold">Jay Snellings</div>
             <nav>
-                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-white"></i></a>
-                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-white"></i></a>
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
                 <a href="#projects" class="mx-2 hover:underline">Projects</a>
                 <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
                 <a href="#contact" class="mx-2 hover:underline">Contact</a>
@@ -46,16 +48,16 @@
         </section>
 
         <section class="p-4 text-center">
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
-            <h2 class="text-2xl font-bold">About Me</h2>
-            <p> I graduated in May 2024 with a Bachelor of Science in Computer Science from attended Colorado State University. I am ready to turn the skills I gained through my degree into a career 
-                in software development where I can continue to grow professionally with a great team.<br />
-                
-                I created this website to challenge myself and to learn more about web development. I would love to bring 
-                that same versatility and excitement to learn to any opportunities at your company!<br /> 
-                I am proficient with object-oriented programming in Java, Python, and C++; with more of a working knowledge of JavaScript, 
-                C#, SQL, HTML, CSS, and ReactJS. See my resume or reach out for more info!<br />
-            </p>
+            <div class="bg-white border border-midgray p-4 rounded-lg">
+                <h2 class="text-2xl font-bold">About Me</h2>
+                <p> I graduated in May 2024 with a Bachelor of Science in Computer Science from attended Colorado State University. I am ready to turn the skills I gained through my degree into a career 
+                    in software development where I can continue to grow professionally with a great team.<br />
+                    
+                    I created this website to challenge myself and to learn more about web development. I would love to bring 
+                    that same versatility and excitement to learn to any opportunities at your company!<br /> 
+                    I am proficient with object-oriented programming in Java, Python, and C++; with more of a working knowledge of JavaScript, 
+                    C#, SQL, HTML, CSS, and ReactJS. See my resume or reach out for more info!<br />
+                </p>
             </div>
         </section>
 
@@ -65,7 +67,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <a href="GptRecruiter.html">
-                    <div class="bg-darkblue2 dark:darkblue2 p-4 rounded-lg">
+                    <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img src="extras/RunScripts.png" alt="GPT Recruiter" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">GPT Recruiter Project</h3>
                         <i>Languages/Tools Used: Python</i>
@@ -73,7 +75,7 @@
                     </div>
                 </a>
                 <a href="CompanyManager.html">
-                    <div class="bg-darkblue2 dark:darkblue2 p-4 rounded-lg">
+                    <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img src="extras/Project.png" alt="Company Management System" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">Company Management System Project</h3>
                         <i>Langauges/Tools Used: Java, JavaScript, HTML, and GitHub Projects</i>
@@ -81,7 +83,7 @@
                     </div>
                 </a>
                 <a href="DeviceManagementSystem.html">
-                    <div class="bg-darkblue2 dark:darkblue2 p-4 rounded-lg">
+                    <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img src="extras/UserManage.png" alt="User Device Management System Project" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">User Device Management System Project</h3>
                         <i>Languages/Tools Used: MySQL, Java, JavaScript, HTML, Apache Tomcat</i>
@@ -89,15 +91,15 @@
                     </div>
                 </a>
                 <a href="MemoryRecall.html">
-                    <div class="bg-darkblue2 dark:darkblue2 p-4 rounded-lg">
+                    <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img src="extras/Memory.png" alt="Memory Recall Project" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">Improving Memory Recall Experiment</h3>
                         <i>Langauges/Tools Used: C#, Unity, and Jira</i>
-                        <p>A experiment in Unity which tests how different fonts, font size, and font colors affect a person's ability to remember information.</p>
+                        <p>An experiment in Unity which tests how different fonts, font size, and font colors affect a person's ability to remember information.</p>
                     </div>
                 </a>
                 <a href="ChessGame.html">
-                    <div class="bg-darkblue2 dark:darkblue2 p-4 rounded-lg">
+                    <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img src="extras/ChessUI.png" alt="Chess Game Project" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">Web Chess Game Project</h3>
                         <i>Languages/Tools Used: Java and GitHub Projects</i>
@@ -108,11 +110,11 @@
         </section>
 
         <section class="p-4">
-            <div class="bg-darkblue2 dark:bg-darkblue2 p-4 rounded-lg bg-gray-200">
-            <div id="contact"></div>
-            <h2 class="text-2xl font-bold mb-4">Contact</h2>
-            <a href="mailto:Jsnellings03@gmail.com">Email: Jsnellings03@gmail.com</a><br />
-            <a href="tel:720-308-5038">Phone: +1 (720) 308-5038</a>
+            <div class="bg-white border border-midgray p-4 rounded-lg">
+                <div id="contact"></div>
+                <h2 class="text-2xl font-bold mb-4">Contact</h2>
+                <a href="mailto:Jsnellings03@gmail.com">Email: Jsnellings03@gmail.com</a><br />
+                <a href="tel:720-308-5038">Phone: +1 (720) 308-5038</a>
             </div>
         </section>
 
@@ -131,8 +133,8 @@
                     </div>
                 </li>
                 <li class="flex space-x-2">
-                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-white"></i></a>
-                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-white"></i></a>
+                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
                 </li>
             </ul>
             <p>&copy; 2024 Jay Snellings. All Rights Reserved.</p>
