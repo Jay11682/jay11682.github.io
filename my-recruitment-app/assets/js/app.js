@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const table = document.getElementById(tableId);
         const headers = table.querySelectorAll('th');
         let sortDirection = 1;
+        let currentSortedColumn = null;
 
         headers.forEach((header, index) => {
+            header.classList.add('sortable');
             header.addEventListener('click', () => {
                 const rows = Array.from(table.querySelector('tbody').rows);
                 const isNumeric = !isNaN(rows[0].cells[index].innerText);
@@ -27,6 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 rows.forEach(row => table.querySelector('tbody').appendChild(row));
 
+                // Reset classes for all headers
+                headers.forEach(h => h.classList.remove('asc', 'desc'));
+
+                // Set the correct class for the current column
+                if (sortDirection === 1) {
+                    header.classList.add('asc');
+                } else {
+                    header.classList.add('desc');
+                }
+
+                // Toggle sort direction for the next click
                 sortDirection *= -1;
             });
         });

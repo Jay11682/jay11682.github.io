@@ -57,3 +57,22 @@ body {
 .table tr:nth-child(even) td {
     background-color: #ffffff;
 }
+th.sortable {
+    cursor: pointer;
+    position: relative;
+}
+
+th.sortable:after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    font-size: 12px;
+}
+
+th.sortable.asc:after {
+    content: '▲'; /* Up arrow */
+}
+
+th.sortable.desc:after {
+    content: '▼'; /* Down arrow */
+}
