@@ -57,15 +57,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderJobDetails = async () => {
         const jobs = await loadJSON('data/jobs.json');
+        const applicants = await loadJSON('data/applicants.json');
         const urlParams = new URLSearchParams(window.location.search);
         const jobId = parseInt(urlParams.get('id'));
         const job = jobs.find(j => j.id === jobId);
+        const jobApplicants = applicants.filter(a => a.jobId === jobId);
 
         document.getElementById('job-title').textContent = job.title;
         document.getElementById('job-id').textContent = job.id;
         document.getElementById('employment-type').textContent = job.employmentType;
         document.getElementById('client-company').textContent = job.clientCompany;
         document.getElementById('status').textContent = job.status;
+
+        document.getElementById('client-company-link').href = `company.html?id=${job.companyId}`;
+
+        const applicantList = document.getElementById('job-applicants-list');
+        jobApplicants.forEach(applicant => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> (Score: ${applicant.score})`;
+            applicantList.appendChild(listItem);
+        });
     };
 
     const renderApplicantDetails = async () => {
@@ -74,14 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const applicantId = parseInt(urlParams.get('id'));
         const applicant = applicants.find(a => a.id === applicantId);
-        const job = jobs.find(j => j.id === applicant.jobId);
+        const appliedJobs = jobs.filter(j => j.id === applicant.jobId);
 
         document.getElementById('applicant-name').textContent = applicant.name;
         document.getElementById('applicant-id').textContent = applicant.id;
         document.getElementById('applicant-email').textContent = applicant.email;
         document.getElementById('applicant-phone').textContent = applicant.phone;
         document.getElementById('applicant-score').textContent = applicant.score;
-        document.getElementById('applied-job').textContent = job ? job.title : 'N/A';
+
+        const jobList = document.getElementById('applicant-jobs-list');
+        appliedJobs.forEach(job => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a>`;
+            jobList.appendChild(listItem);
+        });
     };
 
     if (document.getElementById('company-list')) {
