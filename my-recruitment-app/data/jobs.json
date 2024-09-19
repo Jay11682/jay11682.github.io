@@ -1,0 +1,5 @@
+[
+    { "id": 1, "title": "Job A", "companyId": 1, "status": "active" },
+    { "id": 2, "title": "Job B", "companyId": 1, "status": "inactive" },
+    { "id": 3, "title": "Job C", "companyId": 2, "status": "placed" }
+]

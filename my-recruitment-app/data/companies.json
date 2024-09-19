@@ -1,0 +1,4 @@
+[
+    { "id": 1, "name": "Company A", "metadata": "Metadata about Company A" },
+    { "id": 2, "name": "Company B", "metadata": "Metadata about Company B" }
+]
