@@ -4,41 +4,72 @@ document.addEventListener('DOMContentLoaded', () => {
         return await response.json();
     };
 
+    const createSortableTable = (tableId) => {
+        const table = document.getElementById(tableId);
+        const headers = table.querySelectorAll('th');
+        let sortDirection = 1;
+
+        headers.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const rows = Array.from(table.querySelector('tbody').rows);
+                const isNumeric = !isNaN(rows[0].cells[index].innerText);
+                
+                rows.sort((rowA, rowB) => {
+                    const cellA = rowA.cells[index].innerText;
+                    const cellB = rowB.cells[index].innerText;
+                    
+                    if (isNumeric) {
+                        return sortDirection * (parseInt(cellA) - parseInt(cellB));
+                    } else {
+                        return sortDirection * cellA.localeCompare(cellB);
+                    }
+                });
+
+                rows.forEach(row => table.querySelector('tbody').appendChild(row));
+
+                sortDirection *= -1;
+            });
+        });
+    };
+
     const renderCompanies = async () => {
-        const companies = await loadJSON('data/companies.json');
+        const companies = await loadJSON('data/consistent_companies.json');
         const companyList = document.getElementById('company-list');
         companies.forEach(company => {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${company.id}</td><td><a href="company.html?id=${company.id}">${company.name}</a></td>`;
             companyList.appendChild(row);
         });
+        createSortableTable('company-table');
     };
 
     const renderJobs = async () => {
-        const jobs = await loadJSON('data/jobs.json');
+        const jobs = await loadJSON('data/consistent_jobs.json');
         const jobList = document.getElementById('job-list');
         jobs.forEach(job => {
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${job.id}</td><td><a href="job.html?id=${job.id}">${job.title}</a></td><td>${job.employmentType}</td><td>${job.clientCompany}</td><td>${job.status}</td>`;
+            row.innerHTML = `<td>${job.id}</td><td><a href="job.html?id=${job.id}">${job.title}</a></td><td>${job.employmentType}</td><td><a href="company.html?id=${job.companyId}">${job.clientCompany}</a></td><td>${job.status}</td>`;
             jobList.appendChild(row);
         });
+        createSortableTable('job-table');
     };
 
     const renderApplicants = async () => {
-        const applicants = await loadJSON('data/applicants.json');
-        const jobs = await loadJSON('data/jobs.json');
+        const applicants = await loadJSON('data/consistent_applicants.json');
+        const jobs = await loadJSON('data/consistent_jobs.json');
         const applicantList = document.getElementById('applicant-list');
         applicants.forEach(applicant => {
             const job = jobs.find(j => j.id === applicant.jobId);
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${applicant.id}</td><td><a href="applicant.html?id=${applicant.id}">${applicant.name}</a></td><td>${applicant.score}</td><td>${job ? job.title : 'N/A'}</td>`;
+            row.innerHTML = `<td>${applicant.id}</td><td><a href="applicant.html?id=${applicant.id}">${applicant.name}</a></td><td>${applicant.score}</td><td><a href="job.html?id=${job.id}">${job.title}</a></td>`;
             applicantList.appendChild(row);
         });
+        createSortableTable('applicant-table');
     };
 
     const renderCompanyDetails = async () => {
-        const companies = await loadJSON('data/companies.json');
-        const jobs = await loadJSON('data/jobs.json');
+        const companies = await loadJSON('data/consistent_companies.json');
+        const jobs = await loadJSON('data/consistent_jobs.json');
         const urlParams = new URLSearchParams(window.location.search);
         const companyId = parseInt(urlParams.get('id'));
         const company = companies.find(c => c.id === companyId);
@@ -56,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderJobDetails = async () => {
-        const jobs = await loadJSON('data/jobs.json');
-        const applicants = await loadJSON('data/applicants.json');
+        const jobs = await loadJSON('data/consistent_jobs.json');
+        const applicants = await loadJSON('data/consistent_applicants.json');
         const urlParams = new URLSearchParams(window.location.search);
         const jobId = parseInt(urlParams.get('id'));
         const job = jobs.find(j => j.id === jobId);
@@ -80,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderApplicantDetails = async () => {
-        const applicants = await loadJSON('data/applicants.json');
-        const jobs = await loadJSON('data/jobs.json');
+        const applicants = await loadJSON('data/consistent_applicants.json');
+        const jobs = await loadJSON('data/consistent_jobs.json');
         const urlParams = new URLSearchParams(window.location.search);
         const applicantId = parseInt(urlParams.get('id'));
         const applicant = applicants.find(a => a.id === applicantId);
