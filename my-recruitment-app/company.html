@@ -11,16 +11,26 @@
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <li><a href="index.html">Companies</a></li>
+            <li><a href="companies.html">Companies</a></li>
             <li><a href="jobs.html">Jobs</a></li>
             <li><a href="applicants.html">Applicants</a></li>
         </ul>
     </div>
     <div class="main-content">
         <h1 id="company-name"></h1>
-        <p id="company-metadata"></p>
-        <h2>Jobs</h2>
-        <ul id="job-list"></ul>
+        <h2>Jobs at <span id="company-name-small"></span></h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Job Title</th>
+                    <th>Employment Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="company-jobs-list">
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
