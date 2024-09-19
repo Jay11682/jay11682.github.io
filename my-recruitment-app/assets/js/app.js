@@ -9,27 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const companyList = document.getElementById('company-list');
         companies.forEach(company => {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="company.html?id=${company.id}">${company.name}</a>`;
+            listItem.innerHTML = `ID: ${company.id} - <a href="company.html?id=${company.id}">${company.name}</a>`;
             companyList.appendChild(listItem);
-        });
-    };
-
-    const renderCompanyDetails = async () => {
-        const companies = await loadJSON('data/companies.json');
-        const jobs = await loadJSON('data/jobs.json');
-        const urlParams = new URLSearchParams(window.location.search);
-        const companyId = parseInt(urlParams.get('id'));
-        const company = companies.find(c => c.id === companyId);
-        const companyJobs = jobs.filter(j => j.companyId === companyId);
-
-        document.getElementById('company-name').textContent = company.name;
-        document.getElementById('company-metadata').textContent = company.metadata;
-
-        const jobList = document.getElementById('job-list');
-        companyJobs.forEach(job => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a> - ${job.status}`;
-            jobList.appendChild(listItem);
         });
     };
 
@@ -38,57 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const jobList = document.getElementById('job-list');
         jobs.forEach(job => {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a> - ${job.status}`;
+            listItem.innerHTML = `ID: ${job.id} - <a href="job.html?id=${job.id}">${job.title}</a> - ${job.status}`;
             jobList.appendChild(listItem);
-        });
-    };
-
-    const renderJobDetails = async () => {
-        const jobs = await loadJSON('data/jobs.json');
-        const applicants = await loadJSON('data/applicants.json');
-        const urlParams = new URLSearchParams(window.location.search);
-        const jobId = parseInt(urlParams.get('id'));
-        const job = jobs.find(j => j.id === jobId);
-        const jobApplicants = applicants.filter(a => a.jobId === jobId);
-
-        document.getElementById('job-title').textContent = job.title;
-        document.getElementById('job-status').textContent = job.status;
-
-        const applicantList = document.getElementById('applicant-list');
-        jobApplicants.forEach(applicant => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score}`;
-            applicantList.appendChild(listItem);
         });
     };
 
     const renderApplicants = async () => {
         const applicants = await loadJSON('data/applicants.json');
+        const jobs = await loadJSON('data/jobs.json');
         const applicantList = document.getElementById('applicant-list');
         applicants.forEach(applicant => {
+            const job = jobs.find(j => j.id === applicant.jobId);
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score}`;
+            listItem.innerHTML = `ID: ${applicant.id} - <a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score} - Job: ${job ? job.title : 'N/A'}`;
             applicantList.appendChild(listItem);
-        });
-    };
-
-    const renderApplicantDetails = async () => {
-        const applicants = await loadJSON('data/applicants.json');
-        const jobs = await loadJSON('data/jobs.json');
-        const urlParams = new URLSearchParams(window.location.search);
-        const applicantId = parseInt(urlParams.get('id'));
-        const applicant = applicants.find(a => a.id === applicantId);
-        const appliedJobs = jobs.filter(j => j.id === applicant.jobId);
-
-        document.getElementById('applicant-name').textContent = applicant.name;
-        document.getElementById('applicant-email').textContent = applicant.email;
-        document.getElementById('applicant-phone').textContent = applicant.phone;
-
-        const appliedJobsList = document.getElementById('applied-jobs-list');
-        appliedJobs.forEach(job => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a> - Score: ${applicant.score}`;
-            appliedJobsList.appendChild(listItem);
         });
     };
 
@@ -96,19 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCompanies();
     }
 
-    if (document.getElementById('company-name')) {
-        renderCompanyDetails();
-    }
-
-    if (document.getElementById('job-list') && document.getElementById('job-title')) {
-        renderJobDetails();
-    } else if (document.getElementById('job-list')) {
+    if (document.getElementById('job-list')) {
         renderJobs();
     }
 
-    if (document.getElementById('applicant-list') && document.getElementById('applicant-name')) {
-        renderApplicantDetails();
-    } else if (document.getElementById('applicant-list')) {
+    if (document.getElementById('applicant-list')) {
         renderApplicants();
     }
 });

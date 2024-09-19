@@ -11,6 +11,7 @@ body {
     color: white;
     padding: 15px;
     height: 100vh;
+    position: fixed;
 }
 
 .sidebar ul {
@@ -29,5 +30,27 @@ body {
 
 .main-content {
     flex: 1;
+    margin-left: 220px;
     padding: 20px;
+}
+
+.scrollable-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.scrollable-list li {
+    margin-bottom: 10px;
+}
+
+.scrollable-list li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.scrollable-list li a:hover {
+    text-decoration: underline;
 }
