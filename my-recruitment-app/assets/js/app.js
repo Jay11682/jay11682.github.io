@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const table = document.getElementById(tableId);
         const headers = table.querySelectorAll('th');
         let sortDirection = 1;
-        let currentSortedColumn = null;
 
         headers.forEach((header, index) => {
             header.classList.add('sortable');
@@ -97,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `<td>${job.id}</td><td><a href="job.html?id=${job.id}">${job.title}</a></td><td>${job.employmentType}</td><td>${job.status}</td>`;
             jobList.appendChild(row);
         });
+        createSortableTable('company-jobs-table');
     };
 
     const renderJobDetails = async () => {
@@ -117,10 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const applicantList = document.getElementById('job-applicants-list');
         jobApplicants.forEach(applicant => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> (Score: ${applicant.score})`;
-            applicantList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `<td><a href="applicant.html?id=${applicant.id}">${applicant.name}</a></td><td>${applicant.score}</td>`;
+            applicantList.appendChild(row);
         });
+        createSortableTable('job-applicants-table');
     };
 
     const renderApplicantDetails = async () => {
@@ -139,10 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const jobList = document.getElementById('applicant-jobs-list');
         appliedJobs.forEach(job => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a>`;
-            jobList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `<td><a href="job.html?id=${job.id}">${job.title}</a></td>`;
+            jobList.appendChild(row);
         });
+        createSortableTable('applicant-jobs-table');
     };
 
     if (document.getElementById('company-list')) {
