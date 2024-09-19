@@ -44,6 +44,15 @@ body {
 
 .scrollable-list li {
     margin-bottom: 10px;
+    padding: 10px;
+}
+
+.scrollable-list li:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.scrollable-list li:nth-child(even) {
+    background-color: #ffffff;
 }
 
 .scrollable-list li a {
@@ -53,4 +62,9 @@ body {
 
 .scrollable-list li a:hover {
     text-decoration: underline;
+}
+
+.list-header {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
