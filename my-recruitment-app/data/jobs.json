@@ -2,121 +2,161 @@
     {
         "id": 0,
         "title": "Job A",
-        "companyId": 0,
-        "status": "active"
+        "companyId": 9,
+        "status": "Open",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company G"
     },
     {
         "id": 1,
         "title": "Job B",
-        "companyId": 6,
-        "status": "placed"
+        "companyId": 5,
+        "status": "Open",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company J"
     },
     {
         "id": 2,
         "title": "Job C",
-        "companyId": 0,
-        "status": "active"
+        "companyId": 3,
+        "status": "Open",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company D"
     },
     {
         "id": 3,
         "title": "Job D",
-        "companyId": 1,
-        "status": "placed"
+        "companyId": 3,
+        "status": "Closed",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company C"
     },
     {
         "id": 4,
         "title": "Job E",
-        "companyId": 5,
-        "status": "placed"
+        "companyId": 3,
+        "status": "Open",
+        "employmentType": "Contract",
+        "clientCompany": "Company B"
     },
     {
         "id": 5,
         "title": "Job F",
-        "companyId": 9,
-        "status": "placed"
+        "companyId": 5,
+        "status": "Open",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company F"
     },
     {
         "id": 6,
         "title": "Job G",
-        "companyId": 9,
-        "status": "placed"
+        "companyId": 7,
+        "status": "Closed",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company F"
     },
     {
         "id": 7,
         "title": "Job H",
-        "companyId": 1,
-        "status": "placed"
+        "companyId": 2,
+        "status": "Open",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company E"
     },
     {
         "id": 8,
         "title": "Job I",
-        "companyId": 8,
-        "status": "active"
+        "companyId": 5,
+        "status": "Open",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company I"
     },
     {
         "id": 9,
         "title": "Job J",
-        "companyId": 2,
-        "status": "active"
+        "companyId": 1,
+        "status": "Closed",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company C"
     },
     {
         "id": 10,
         "title": "Job A",
-        "companyId": 3,
-        "status": "active"
+        "companyId": 9,
+        "status": "Open",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company D"
     },
     {
         "id": 11,
         "title": "Job B",
-        "companyId": 0,
-        "status": "active"
+        "companyId": 6,
+        "status": "Open",
+        "employmentType": "Contract",
+        "clientCompany": "Company I"
     },
     {
         "id": 12,
         "title": "Job C",
-        "companyId": 6,
-        "status": "active"
+        "companyId": 8,
+        "status": "Closed",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company I"
     },
     {
         "id": 13,
         "title": "Job D",
         "companyId": 7,
-        "status": "placed"
+        "status": "Closed",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company C"
     },
     {
         "id": 14,
         "title": "Job E",
-        "companyId": 7,
-        "status": "inactive"
+        "companyId": 4,
+        "status": "Closed",
+        "employmentType": "Contract",
+        "clientCompany": "Company C"
     },
     {
         "id": 15,
         "title": "Job F",
-        "companyId": 0,
-        "status": "placed"
+        "companyId": 1,
+        "status": "Closed",
+        "employmentType": "Contract",
+        "clientCompany": "Company I"
     },
     {
         "id": 16,
         "title": "Job G",
-        "companyId": 2,
-        "status": "placed"
+        "companyId": 1,
+        "status": "Closed",
+        "employmentType": "Direct Hire",
+        "clientCompany": "Company I"
     },
     {
         "id": 17,
         "title": "Job H",
-        "companyId": 4,
-        "status": "placed"
+        "companyId": 0,
+        "status": "Open",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company J"
     },
     {
         "id": 18,
         "title": "Job I",
-        "companyId": 4,
-        "status": "inactive"
+        "companyId": 6,
+        "status": "Closed",
+        "employmentType": "Contract",
+        "clientCompany": "Company B"
     },
     {
         "id": 19,
         "title": "Job J",
-        "companyId": 2,
-        "status": "inactive"
+        "companyId": 3,
+        "status": "Closed",
+        "employmentType": "Contract to Hire",
+        "clientCompany": "Company E"
     }
 ]

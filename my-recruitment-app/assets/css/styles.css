@@ -34,37 +34,26 @@ body {
     padding: 20px;
 }
 
-.scrollable-list {
-    max-height: 400px;
-    overflow-y: auto;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 8px;
     border: 1px solid #ddd;
-    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f4f4f4;
+}
+
+.table tr:nth-child(odd) td {
     background-color: #f9f9f9;
 }
 
-.scrollable-list li {
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-.scrollable-list li:nth-child(odd) {
-    background-color: #f2f2f2;
-}
-
-.scrollable-list li:nth-child(even) {
+.table tr:nth-child(even) td {
     background-color: #ffffff;
-}
-
-.scrollable-list li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.scrollable-list li a:hover {
-    text-decoration: underline;
-}
-
-.list-header {
-    font-weight: bold;
-    margin-bottom: 10px;
 }

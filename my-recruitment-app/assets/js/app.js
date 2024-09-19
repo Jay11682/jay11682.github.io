@@ -8,31 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const companies = await loadJSON('data/companies.json');
         const companyList = document.getElementById('company-list');
         companies.forEach(company => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `ID: ${company.id} - <a href="company.html?id=${company.id}">${company.name}</a>`;
-            companyList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${company.id}</td><td><a href="company.html?id=${company.id}">${company.name}</a></td>`;
+            companyList.appendChild(row);
         });
     };
 
     const renderJobs = async () => {
-        const jobs = await loadJSON('data/jobs.json');
+        const jobs = await loadJSON('data/updated_jobs.json');
         const jobList = document.getElementById('job-list');
         jobs.forEach(job => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `ID: ${job.id} - <a href="job.html?id=${job.id}">${job.title}</a> - ${job.status}`;
-            jobList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${job.id}</td><td><a href="job.html?id=${job.id}">${job.title}</a></td><td>${job.employmentType}</td><td>${job.clientCompany}</td><td>${job.status}</td>`;
+            jobList.appendChild(row);
         });
     };
 
     const renderApplicants = async () => {
         const applicants = await loadJSON('data/applicants.json');
-        const jobs = await loadJSON('data/jobs.json');
+        const jobs = await loadJSON('data/updated_jobs.json');
         const applicantList = document.getElementById('applicant-list');
         applicants.forEach(applicant => {
             const job = jobs.find(j => j.id === applicant.jobId);
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `ID: ${applicant.id} - <a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score} - Job: ${job ? job.title : 'N/A'}`;
-            applicantList.appendChild(listItem);
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${applicant.id}</td><td><a href="applicant.html?id=${applicant.id}">${applicant.name}</a></td><td>${applicant.score}</td><td>${job ? job.title : 'N/A'}</td>`;
+            applicantList.appendChild(row);
         });
     };
 
