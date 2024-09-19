@@ -33,6 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const renderJobs = async () => {
+        const jobs = await loadJSON('data/jobs.json');
+        const jobList = document.getElementById('job-list');
+        jobs.forEach(job => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="job.html?id=${job.id}">${job.title}</a> - ${job.status}`;
+            jobList.appendChild(listItem);
+        });
+    };
+
     const renderJobDetails = async () => {
         const jobs = await loadJSON('data/jobs.json');
         const applicants = await loadJSON('data/applicants.json');
@@ -46,6 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const applicantList = document.getElementById('applicant-list');
         jobApplicants.forEach(applicant => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score}`;
+            applicantList.appendChild(listItem);
+        });
+    };
+
+    const renderApplicants = async () => {
+        const applicants = await loadJSON('data/applicants.json');
+        const applicantList = document.getElementById('applicant-list');
+        applicants.forEach(applicant => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `<a href="applicant.html?id=${applicant.id}">${applicant.name}</a> - Score: ${applicant.score}`;
             applicantList.appendChild(listItem);
@@ -80,11 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCompanyDetails();
     }
 
-    if (document.getElementById('job-title')) {
+    if (document.getElementById('job-list') && document.getElementById('job-title')) {
         renderJobDetails();
+    } else if (document.getElementById('job-list')) {
+        renderJobs();
     }
 
-    if (document.getElementById('applicant-name')) {
+    if (document.getElementById('applicant-list') && document.getElementById('applicant-name')) {
         renderApplicantDetails();
+    } else if (document.getElementById('applicant-list')) {
+        renderApplicants();
     }
 });
