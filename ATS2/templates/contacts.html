@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+<div class="list-header contact-header">
+    <div class="header-content">
+        <div class="title">
+            <span class="circle contact-circle"></span>
+            <h2>Contacts</h2>
+            <form method="get" action="{{ url_for('contacts') }}" class="search-form">
+                <input type="text" name="search" placeholder="Search" value="{{ search_query }}">
+            </form>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('add_contact') }}" class="btn">Add Contact</a>
+
+<table>
+    <thead>
+        <tr>
+            <th class="sortable">ID</th>
+            <th class="sortable">Name</th>
+            <th class="sortable">Email</th>
+            <th class="sortable">Phone</th>
+            <th class="sortable">Company</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.id }}</td>
+            <td>
+                <a href="{{ url_for('contact_detail', contact_id=contact.id) }}">{{ contact.name }}</a>
+            </td>
+            <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
+            <td><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></td>
+            <td>{{ contact.company.name if contact.company else 'N/A' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

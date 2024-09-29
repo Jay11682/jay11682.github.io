@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Jobs{% endblock %}
+
+{% block content %}
+<div class="list-header job-header">
+    <div class="header-content">
+        <div class="title">
+            <span class="circle job-circle"></span>
+            <h2>Jobs</h2>
+            <form method="get" action="{{ url_for('jobs') }}" class="search-form">
+                <input type="text" name="search" placeholder="Search" value="{{ search_query }}">
+            </form>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('add_job') }}" class="btn">Add Job</a>
+
+<table>
+    <thead>
+        <tr>
+            <th class="sortable">ID</th>
+            <th class="sortable">Title</th>
+            <th class="sortable">Company</th>
+            <th class="sortable">Status</th>
+            <th class="sortable">Employment Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.id }}</td>
+            <td>
+                <a href="{{ url_for('job_detail', job_id=job.id) }}">{{ job.title }}</a>
+            </td>
+            <td>{{ job.company.name if job.company else 'N/A' }}</td>
+            <td>{{ job.status }}</td>
+            <td>{{ job.employment }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

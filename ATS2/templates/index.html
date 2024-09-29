@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<!-- Key Metrics Section -->
+<div class="dashboard-metrics">
+    <div class="metric-card">
+        <h3>Total Candidates</h3>
+        <p>{{ total_candidates }}</p>
+    </div>
+    <div class="metric-card">
+        <h3>Total Jobs</h3>
+        <p>{{ total_jobs }}</p>
+    </div>
+    <div class="metric-card">
+        <h3>Total Companies</h3>
+        <p>{{ total_companies }}</p>
+    </div>
+    <div class="metric-card">
+        <h3>Total Applications</h3>
+        <p>{{ total_applications }}</p>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div class="charts">
+    <div class="chart-container">
+        <h3>Candidates by Status</h3>
+        <canvas id="candidatesByStatusChart"></canvas>
+    </div>
+    
+    <!-- Resized Jobs by Status Chart -->
+    <div class="chart-container" style="width: 50%; max-width: 400px;">
+        <h3>Jobs by Status</h3>
+        <canvas id="jobsByStatusChart"></canvas>
+    </div>
+</div>
+
+<!-- Recent Activities Section -->
+<div class="recent-activities">
+    <h3>Recent Applications</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Application Date</th>
+                <th>Candidate</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in recent_activities %}
+            <tr>
+                <td>{{ app.application_date }}</td>
+                <td><a href="{{ url_for('candidate_detail', candidate_id=app.candidate_id) }}">{{ app.candidate_name }}</a></td>
+                <td><a href="{{ url_for('job_detail', job_id=app.job_id) }}">{{ app.job_title }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Charts Initialization Script -->
+<script>
+    // Candidates by Status - Bar Chart
+    const candidateStatusLabels = {{ candidate_status_labels | tojson | safe }};
+    const candidateStatusData = {{ candidate_status_data | tojson | safe }};
+
+    const ctxCandidates = document.getElementById('candidatesByStatusChart').getContext('2d');
+    new Chart(ctxCandidates, {
+        type: 'bar',
+        data: {
+            labels: candidateStatusLabels,
+            datasets: [{
+                label: '# of Candidates',
+                data: candidateStatusData,
+                backgroundColor: 'rgba(40, 167, 69, 0.6)',
+                borderColor: 'rgba(40, 167, 69, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision:0
+                }
+            }
+        }
+    });
+
+    // Jobs by Status - Doughnut Chart
+    const jobStatusLabels = {{ job_status_labels | tojson | safe }};
+    const jobStatusData = {{ job_status_data | tojson | safe }};
+
+    const ctxJobs = document.getElementById('jobsByStatusChart').getContext('2d');
+    new Chart(ctxJobs, {
+        type: 'doughnut',
+        data: {
+            labels: jobStatusLabels,
+            datasets: [{
+                data: jobStatusData,
+                backgroundColor: [
+                    'rgba(220,53,69,0.6)',    // Red
+                    'rgba(0,123,255,0.6)',    // Blue
+                    'rgba(255,193,7,0.6)'     // Yellow
+                ],
+                borderColor: [
+                    'rgba(220,53,69,1)',
+                    'rgba(0,123,255,1)',
+                    'rgba(255,193,7,1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
+</script>
+{% endblock %}

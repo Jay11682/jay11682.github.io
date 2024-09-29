@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ATS2 - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>ATS2 - Applicant Tracking System</h1>
+    </header>
+    <div class="container">
+        <aside>
+            <div class="sidebar-menu">
+                <button id="menu-button" aria-expanded="false" aria-controls="menu-list">Menu</button>
+                <!-- Menu list -->
+                <ul id="menu-list" class="menu-list">
+                    <li>
+                        <a href="{{ url_for('candidates') }}">
+                            <span class="circle candidate-circle"></span>
+                            Candidates
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('jobs') }}">
+                            <span class="circle job-circle"></span>
+                            Jobs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('contacts') }}">
+                            <span class="circle contact-circle"></span>
+                            Contacts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('companies') }}">
+                            <span class="circle company-circle"></span>
+                            Companies
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('index') }}">
+                            <span class="circle dashboard-circle"></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                </ul>
+            </div>
+            <ul class="sidebar-items">
+                {% for item in session.get('sidebar', []) %}
+                <li>
+                    <div class="sidebar-item {{ item.type }}-detail">
+                        <a href="{{ item.url }}">{{ item.name }}</a>
+                        <form action="{{ url_for('remove_sidebar_item') }}" method="post" style="display:inline;">
+                            <input type="hidden" name="url" value="{{ item.url }}">
+                            <input type="hidden" name="current_url" value="{{ request.path }}">
+                            <button type="submit" class="remove-btn">x</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-messages">
+                  {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2023 ATS2 Inc.</p>
+    </footer>
+    <!-- Include scripts -->
+    <script src="{{ url_for('static', filename='sortable.js') }}"></script>
+    <script src="{{ url_for('static', filename='sidebar.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Candidate{% endblock %}
+
+{% block content %}
+<h2>Add Candidate</h2>
+<form method="post">
+    <label for="first_name">First Name:</label><br>
+    <input type="text" id="first_name" name="first_name" required><br><br>
+
+    <label for="last_name">Last Name:</label><br>
+    <input type="text" id="last_name" name="last_name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Mobile:</label><br>
+    <input type="text" id="phone" name="phone"><br><br>
+
+    <label for="status">Candidate Status:</label><br>
+    <select id="status" name="status" required>
+        {% for status in statuses %}
+        <option value="{{ status }}">{{ status }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="current_company">Current Company:</label><br>
+    <input type="text" id="current_company" name="current_company"><br><br>
+
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br><br>
+
+    <input type="submit" value="Add Candidate" class="btn">
+    <a href="{{ url_for('candidates') }}" class="btn btn-cancel">Cancel</a>
+</form>
+{% endblock %}

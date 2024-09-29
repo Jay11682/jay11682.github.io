@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}Candidate Details{% endblock %}
+
+{% block content %}
+<div class="detail-header candidate-detail">
+    <div class="header-content">
+        <h2>{{ candidate.first_name }} {{ candidate.last_name }}</h2>
+        <div class="header-buttons">
+            <a href="{{ url_for('edit_candidate', candidate_id=candidate.id) }}" class="btn btn-edit">Edit</a>
+            <form action="{{ url_for('delete_candidate', candidate_id=candidate.id) }}" method="post">
+                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this candidate?');">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="subheader candidate-subheader">
+    <p><strong>Email:</strong> <a href="mailto:{{ candidate.email }}">{{ candidate.email }}</a></p>
+    <p><strong>Mobile:</strong> <a href="tel:{{ candidate.phone }}">{{ candidate.phone }}</a></p>
+    <p><strong>Candidate Status:</strong> {{ candidate.status }}</p>
+    <p><strong>Current Company:</strong> {{ candidate.current_company }}</p>
+    <p><strong>Title:</strong> {{ candidate.title }}</p>
+    <p><strong>Last Edit:</strong> {{ candidate.last_edit.strftime('%m/%d/%Y') }}</p>
+</div>
+
+<h3>Applied Jobs</h3>
+{% if candidate.applications %}
+<table>
+    <thead>
+        <tr>
+            <th class="sortable">Job ID</th>
+            <th class="sortable">Title</th>
+            <th class="sortable">Company</th>
+            <th class="sortable">Application Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in candidate.applications %}
+        <tr>
+            <td>{{ application.job.id }}</td>
+            <td>
+                <a href="{{ url_for('job_detail', job_id=application.job.id) }}">{{ application.job.title }}</a>
+            </td>
+            <td>{{ application.job.company.name if application.job.company else 'N/A' }}</td>
+            <td>{{ application.application_date.strftime('%m/%d/%Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No applications found.</p>
+{% endif %}
+{% endblock %}
+
+<script>
+    // Wait for the DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to make field editable
+        function makeFieldEditable(element, options) {
+            const currentValue = element.textContent.trim();
+            const fieldName = element.dataset.field;
+            const recordId = element.dataset.id;
+    
+            // Create a select element
+            const select = document.createElement('select');
+            select.className = 'inline-edit-select';
+    
+            options.forEach(function(option) {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                if (option === currentValue) {
+                    opt.selected = true;
+                }
+                select.appendChild(opt);
+            });
+    
+            // Replace the element with the select
+            element.parentNode.replaceChild(select, element);
+            select.focus();
+    
+            // Handle when the select loses focus or value changes
+            function saveChanges() {
+                const newValue = select.value;
+                if (newValue !== currentValue) {
+                    // Send AJAX request to update
+                    fetch('{{ url_for("update_candidate_field") }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            id: recordId,
+                            field: fieldName,
+                            value: newValue
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Update the display
+                            element.textContent = newValue;
+                        } else {
+                            alert('Update failed: ' + data.message);
+                        }
+                        // Replace select with the element
+                        select.parentNode.replaceChild(element, select);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred.');
+                        select.parentNode.replaceChild(element, select);
+                    });
+                } else {
+                    // No change; revert back
+                    select.parentNode.replaceChild(element, select);
+                }
+            }
+    
+            select.addEventListener('blur', saveChanges);
+            select.addEventListener('change', saveChanges);
+        }
+    
+        // Get all editable fields
+        document.querySelectorAll('.editable-field').forEach(function(element) {
+            element.addEventListener('click', function() {
+                const fieldName = element.dataset.field;
+    
+                // Define options based on field
+                let options = [];
+                if (fieldName === 'status') {
+                    options = ['Active', 'Inactive', 'Placed'];
+                }
+                // Add more fields as needed
+    
+                makeFieldEditable(element, options);
+            });
+        });
+    });
+    </script>

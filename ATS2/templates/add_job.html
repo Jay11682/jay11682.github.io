@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Job{% endblock %}
+
+{% block content %}
+<h2>Add Job</h2>
+<form method="post">
+    <label for="title">Job Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <label for="status">Status:</label><br>
+    <select id="status" name="status" required>
+        {% for status in statuses %}
+        <option value="{{ status }}">{{ status }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="employment">Employment:</label><br>
+    <select id="employment" name="employment" required>
+        {% for emp in employments %}
+        <option value="{{ emp }}">{{ emp }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="company_id">Company:</label><br>
+    <select id="company_id" name="company_id">
+        {% for company in companies %}
+        <option value="{{ company.id }}">{{ company.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <input type="submit" value="Add Job">
+    <a href="{{ url_for('jobs') }}" class="btn btn-cancel">Cancel</a>
+</form>
+{% endblock %}

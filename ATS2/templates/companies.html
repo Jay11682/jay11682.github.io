@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block content %}
+<div class="list-header company-header">
+    <div class="header-content">
+        <div class="title">
+            <span class="circle company-circle"></span>
+            <h2>Companies</h2>
+            <form method="get" action="{{ url_for('companies') }}" class="search-form">
+                <input type="text" name="search" placeholder="Search" value="{{ search_query }}">
+            </form>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('add_company') }}" class="btn">Add Company</a>
+
+<table>
+    <thead>
+        <tr>
+            <th class="sortable">ID</th>
+            <th class="sortable">Name</th>
+            <th class="sortable">Website</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for company in companies %}
+        <tr>
+            <td>{{ company.id }}</td>
+            <td>
+                <a href="{{ url_for('company_detail', company_id=company.id) }}">{{ company.name }}</a>
+            </td>
+            <td>
+                <a href="{{ company.website }}" target="_blank">{{ company.website }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
