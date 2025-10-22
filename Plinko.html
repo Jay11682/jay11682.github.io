@@ -25,6 +25,16 @@
             transform: translateY(0px);
             box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
+        /* hide number input spinners */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
         /* popup message styles */
         .toast-message {
             position: absolute;
@@ -45,16 +55,16 @@
         }
     </style>
 </head>
-<body class="bg-lightgray text-primary pb-20">
-    <div class="bg-lightgray text-primary">
+<body class="bg-lightgray text-gray-600 pb-20">
+    <div class="bg-lightgray text-[#4a5568]">
         <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray z-50">
-            <div class="text-2xl font-bold">Jay Snellings</div>
+            <div class="text-2xl font-bold text-[#4a5568]">Jay Snellings</div>
             <nav>
-                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
-                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
-                <a href="index.html" class="mx-2 hover:underline">Home</a>
-                <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
-                <a href="#contact" class="mx-2 hover:underline">Contact</a>
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-[#4a5568]"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-[#4a5568]"></i></a>
+                <a href="index.html" class="mx-2 hover:underline text-[#4a5568]">Home</a>
+                <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline text-[#4a5568]">Download Resume</a>
+                <a href="#contact" class="mx-2 hover:underline text-[#4a5568]">Contact</a>
             </nav>
         </header>
 
@@ -75,7 +85,11 @@
             <div class="space-y-3">
                 <div class="bg-white p-4 rounded-lg border border-midgray">
                     <label class="block text-sm mb-1">Wager (points)</label>
-                    <input id="wager" type="number" min="1" step="1" value="1" class="w-full p-2 border rounded" />
+                    <div class="relative group">
+                        <input id="wager" type="number" min="1" step="1" value="1" class="w-full p-2 border rounded" />
+                        <button id="allInBtn" class="absolute right-0 top-0 h-full px-3 bg-red-500 hover:bg-red-600 text-white rounded-r 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-200">All In</button>
+                    </div>
                     <button id="playBtn" class="mt-3 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition-colors duration-200 shadow-sm hover:shadow">Drop Ball</button>
                     <div class="text-sm font-medium text-primary mt-3 text-center">🎯 You can also click anywhere on the board to drop a ball!</div>                </div>
 
@@ -92,18 +106,18 @@
                 <li>
                     <div class="flex items-center">
                         <img loading="lazy" src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
-                        <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                        <a href="mailto:Jsnellings03@gmail.com" class="hover:underline text-[#4a5568]">Jsnellings03@gmail.com</a>
                     </div>
                 </li>
                 <li>
                     <div class="flex items-center">
                         <img loading="lazy" src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
-                        <a href="tel:720-308-5038" class="hover:underline whitespace-nowrap">+1 (720) 308-5038</a>
+                        <a href="tel:720-308-5038" class="hover:underline whitespace-nowrap text-[#4a5568]">+1 (720) 308-5038</a>
                     </div>
                 </li>
                 <li class="flex space-x-2">
-                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
-                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
+                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-[#4a5568]"></i></a>
+                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-[#4a5568]"></i></a>
                 </li>
             </ul>
             <p>&copy; 2025 Jay Snellings. All Rights Reserved.</p>
@@ -403,6 +417,12 @@ function getWager() {
     }
     return capped;
 }
+
+// handle all in button
+document.getElementById('allInBtn').addEventListener('click', () => {
+    const input = document.getElementById('wager');
+    input.value = balance;
+});
 
 // allow clicking on canvas to drop at that x
 canvas.addEventListener('click', (ev)=>{
