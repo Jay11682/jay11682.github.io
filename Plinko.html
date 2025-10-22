@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Secret Plinko</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome (needed for header icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
+    <style>
+        /* tiny custom styles for canvas centering */
+        .plinko-canvas { background: linear-gradient(180deg,#f8fafc,#f1f5f9); border-radius: 12px; }
+        /* popup message styles */
+        .toast-message {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            z-index: 50;
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translate(-50%, 100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-lightgray text-primary pb-20">
+    <div class="bg-lightgray text-primary">
+        <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray z-50">
+            <div class="text-2xl font-bold">Jay Snellings</div>
+            <nav>
+                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
+                <a href="index.html" class="mx-2 hover:underline">Home</a>
+                <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
+                <a href="#contact" class="mx-2 hover:underline">Contact</a>
+            </nav>
+        </header>
+
+        <div class="max-w-4xl mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="md:col-span-2">
+                <div class="plinko-canvas p-4 max-w-[640px] mx-auto relative">
+                    <h1 class="text-2xl font-bold text-center mb-3">Secret Plinko!</h1>
+                    <canvas id="board" width="560" height="640" class="mx-auto block"></canvas>
+                    <!-- move score into the plinko box so it visually aligns with the board -->
+                    <div class="absolute top-3 right-3 text-right bg-white/80 backdrop-blur-sm px-3 py-1 rounded-md">
+                        <div class="text-xs text-gray-600">Points</div>
+                        <div id="balanceValue" class="text-sm font-semibold text-primary">0 pts</div>
+                    </div>
+                </div>
+                <!-- Return Home button removed; site header provides navigation -->
+            </div>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-lg border border-midgray">
+                    <label class="block text-sm mb-1">Wager (points)</label>
+                    <input id="wager" type="number" min="1" step="1" value="1" class="w-full p-2 border rounded" />
+                    <button id="playBtn" class="mt-3 w-full bg-primary text-white py-2 rounded">Play</button>
+                    <div class="text-xs text-gray-500 mt-2">Click on the board to drop the ball at a specific spot.</div>
+                </div>
+
+                <!-- payouts section removed — payouts are displayed as boxes under the board -->
+            </div>
+        </div>
+
+        </div>
+
+        <div id="contact"></div>
+
+        <footer class="text-center p-4">
+            <ul class="flex justify-center space-x-4 mb-4">
+                <li>
+                    <div class="flex items-center">
+                        <img loading="lazy" src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
+                        <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <img loading="lazy" src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
+                        <a href="tel:720-308-5038" class="hover:underline whitespace-nowrap">+1 (720) 308-5038</a>
+                    </div>
+                </li>
+                <li class="flex space-x-2">
+                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
+                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
+                </li>
+            </ul>
+            <p>&copy; 2025 Jay Snellings. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+<script>
+// Plinko: improved physics and triangular lattice; responsive canvas
+const canvas = document.getElementById('board');
+const ctx = canvas.getContext('2d');
+const cols = 9; // final slots
+const rows = 9; // peg rows (height of pyramid)
+const pegRadius = 6; // collision radius (CSS pixels)
+let slotWidth = 0;
+let ySpacing = 0; // will be computed on resize
+let cssWidth = 560, cssHeight = 640; // CSS pixel logical size
+let gravity = 0.28; // slower fall
+
+let balance = parseInt(localStorage.getItem('plinko_points') || '500', 10);
+let isAnimating = false;
+const payouts = [0,0,2,5,10,5,2,0,0];
+
+const ballImg = new Image(); ballImg.src = 'extras/jay.png';
+
+// particle system for satisfying collision visuals
+const particles = [];
+function spawnParticles(x,y,color){
+    for(let i=0;i<10;i++){
+        particles.push({x,y,vx:(Math.random()-0.5)*3,vy:(Math.random()-1.5)*3,life:36,color});
+    }
+}
+
+// last landing highlight
+let lastLanding = {index:-1, frames:0};
+
+function drawRoundedRect(x,y,w,h,r, fillStyle, strokeStyle){
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.arcTo(x+w, y, x+w, y+h, r);
+    ctx.arcTo(x+w, y+h, x, y+h, r);
+    ctx.arcTo(x, y+h, x, y, r);
+    ctx.arcTo(x, y, x+w, y, r);
+    ctx.closePath();
+    if(fillStyle){ ctx.fillStyle = fillStyle; ctx.fill(); }
+    if(strokeStyle){ ctx.strokeStyle = strokeStyle; ctx.stroke(); }
+}
+
+// resize canvas to container width while preserving aspect ratio and supporting high-DPI
+function resizeCanvas(){
+    const dpr = window.devicePixelRatio || 1;
+    const container = canvas.parentElement;
+    const maxW = 640; // keep the original max width
+    // subtract horizontal padding so the canvas fits inside the padded container
+    const style = window.getComputedStyle(container);
+    const padL = parseFloat(style.paddingLeft) || 0;
+    const padR = parseFloat(style.paddingRight) || 0;
+    const available = Math.max(0, (container.clientWidth || maxW) - padL - padR);
+    const cssW = Math.min(available || maxW, maxW);
+    const cssH = Math.round(cssW * (640/560));
+    cssWidth = cssW; cssHeight = cssH;
+    canvas.style.width = cssWidth + 'px';
+    canvas.style.height = cssHeight + 'px';
+    canvas.width = Math.max(1, Math.floor(cssWidth * dpr));
+    canvas.height = Math.max(1, Math.floor(cssHeight * dpr));
+    // Set transform so drawing coordinates use CSS pixels
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    slotWidth = cssWidth / cols;
+    ySpacing = slotWidth * 0.86;
+}
+
+function renderBoard(){
+    // keep canvas transparent so container's gradient background shows through
+    ctx.clearRect(0,0,cssWidth,cssHeight);
+
+    // triangular pyramid: row 0 has 1 peg, row 1 has 2, ..., row (rows-1) has rows pegs
+    const topY = 40;
+    for(let r=0;r<rows;r++){
+        const n = r+1; // pegs in this row
+        const totalWidth = (n-1) * slotWidth;
+        const startX = cssWidth/2 - totalWidth/2;
+        const y = topY + r * ySpacing;
+        for(let i=0;i<n;i++){
+            const x = startX + i * slotWidth;
+            // draw small dot for peg using site neutral color
+            ctx.beginPath(); ctx.fillStyle = '#334155'; ctx.arc(x, y, 3.5, 0, Math.PI*2); ctx.fill();
+        }
+    }
+
+    // draw & update particles
+    for(let i=particles.length-1;i>=0;i--){
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life--;
+        ctx.globalAlpha = Math.max(0, p.life/36);
+        ctx.fillStyle = p.color || '#60a5fa';
+        ctx.fillRect(p.x, p.y, 3, 3);
+        ctx.globalAlpha = 1;
+        if(p.life<=0) particles.splice(i,1);
+    }
+
+    // draw colored payout boxes across the bottom (visible below the pegs)
+    const boxY = cssHeight - 70;
+    const boxH = 56;
+    for(let i=0;i<cols;i++){
+        const x = i*slotWidth;
+        const p = payouts[i] || 0;
+        let color = '#ef4444';
+        if(p >= 10) color = '#b91c1c';
+        else if(p >= 5) color = '#f97316';
+        else if(p >= 2) color = '#fb923c';
+        else if(p === 1) color = '#facc15';
+        else color = '#ef4444';
+        // highlight if last landing
+        if(lastLanding.index === i && lastLanding.frames > 0){
+            // glow behind
+            ctx.save(); ctx.globalAlpha = 0.18;
+            drawRoundedRect(x+2, boxY-6, slotWidth-4, boxH, 8, '#fff', null);
+            ctx.restore();
+        }
+        // box
+        drawRoundedRect(x+6, boxY, slotWidth-12, boxH-12, 6, color, '#00000020');
+        // label
+        ctx.fillStyle = '#0f172a'; ctx.font = '18px sans-serif'; ctx.textAlign='center';
+        ctx.fillText((p>0? p+'x': '0x'), x + slotWidth/2, boxY + (boxH-12)/2 + 6);
+    }
+
+    // decrement landing highlight frames
+    if(lastLanding.frames > 0) lastLanding.frames--;
+}
+
+function updateBalanceDisplay(){
+    const el = document.getElementById('balanceValue');
+    if(el) el.textContent = balance + ' pts';
+    localStorage.setItem('plinko_points', String(balance));
+}
+
+function dropBallAt(x0, wager){
+    if(isAnimating) return;
+    if(balance <= 0) {
+        showMessage("You're out of points!");
+        giveStarterPoints();
+        return;
+    }
+    if(wager <= 0 || wager > balance){ alert('Invalid wager'); return; }
+    balance -= wager; updateBalanceDisplay();
+
+    isAnimating = true;
+    // initial position and guaranteed small lateral velocity so ball doesn't drop perfectly straight
+    let x = Math.max(8, Math.min(cssWidth-8, x0));
+    let y = 20; let vx = (Math.random()<0.5?-1:1)*(0.8 + Math.random()*0.8); let vy = 0;
+    const restitution = 0.9; // bounce energy retention
+
+    function step(){
+        vy += gravity; vx *= 0.999; x += vx; y += vy;
+
+        // collisions with triangular pegs: approximate as circle for collision response but visuals are triangles
+        for(let r=0;r<rows;r++){
+            const n = r+1;
+            const totalWidth = (n-1) * slotWidth;
+            const startX = cssWidth/2 - totalWidth/2;
+            const py = 40 + r * ySpacing;
+            for(let c=0;c<n;c++){
+                const px = startX + c*slotWidth;
+                const dx = x-px, dy = y-py, dist = Math.sqrt(dx*dx+dy*dy);
+                const minDist = pegRadius + 8; // effective collision distance
+                if(dist < minDist){
+                    // normal
+                    const nx = dx/dist, ny = dy/dist;
+                    // relative velocity along normal
+                    const rel = vx*nx + vy*ny;
+                    // apply reflection only if moving toward the peg
+                    if(rel < 0){
+                        vx = vx - (1+restitution)*rel*nx;
+                        vy = vy - (1+restitution)*rel*ny;
+                        // tangential friction / jitter
+                        const tx = -ny, ty = nx; // tangent vector
+                        const tangential = (vx*tx + vy*ty) * 0.2;
+                        vx -= tangential*tx; vy -= tangential*ty;
+                        // add a small random kick so paths diverge
+                        vx += (Math.random()-0.5)*0.8;
+                        vy -= Math.random()*0.6;
+                        // spawn particles for feedback
+                        spawnParticles(px,py,'#60a5fa');
+                    }
+                }
+            }
+        }
+
+        // walls
+        if(x < 8){ x = 8; vx = Math.abs(vx)*0.9; }
+        if(x > cssWidth-8){ x = cssWidth-8; vx = -Math.abs(vx)*0.9; }
+
+        renderBoard();
+        // draw image ball (slightly larger)
+        const ballSize = 22;
+        ctx.save();
+        ctx.beginPath(); ctx.arc(x,y,ballSize/2,0,Math.PI*2); ctx.closePath(); ctx.clip();
+        if(ballImg.complete) ctx.drawImage(ballImg, x-ballSize/2, y-ballSize/2, ballSize, ballSize);
+        else { ctx.fillStyle='#ef4444'; ctx.fillRect(x-ballSize/2, y-ballSize/2, ballSize, ballSize); }
+        ctx.restore();
+
+        if(y < cssHeight-120){ requestAnimationFrame(step); }
+        else {
+            const slot = Math.min(cols-1, Math.floor(x/slotWidth));
+            const payout = payouts[slot] || 0; const winnings = Math.floor(wager * payout);
+            // animate settling: move ball to center of slot then finish
+            const targetX = slot*slotWidth + slotWidth/2;
+            const settleFrames = 18;
+            let settleCount = 0;
+            function settleStep(){
+                // interpolate x towards targetX and draw
+                x += (targetX - x) * 0.22;
+                renderBoard();
+                // draw ball at new x and at the bottom just above boxes
+                const settleY = cssHeight - 100;
+                ctx.save(); ctx.beginPath(); ctx.arc(x,settleY,11,0,Math.PI*2); ctx.closePath(); ctx.clip();
+                if(ballImg.complete) ctx.drawImage(ballImg, x-11, settleY-11, 22, 22);
+                else { ctx.fillStyle='#ef4444'; ctx.fillRect(x-11, settleY-11, 22, 22); }
+                ctx.restore();
+                settleCount++;
+                if(settleCount < settleFrames) requestAnimationFrame(settleStep);
+                else {
+                    // final results
+                    balance += winnings;
+                    updateBalanceDisplay();
+                    // check for refill after updating balance display
+                    if(balance <= 0) trySessionRefill();
+                    // highlight box and spawn a short particle burst, then clear
+                    lastLanding.index = slot; lastLanding.frames = 40;
+                    spawnParticles(x, cssHeight-140, '#f97316');
+                    setTimeout(()=>{ particles.length = 0; lastLanding.frames = 0; }, 800);
+                    isAnimating = false;
+                }
+            }
+            requestAnimationFrame(settleStep);
+        }
+    }
+    requestAnimationFrame(step);
+}
+
+// wire controls
+
+// show a popup message that fades out
+function showMessage(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease-out';
+        setTimeout(() => toast.remove(), 300);
+    }, 2000);
+}
+
+// give points when player has zero
+function giveStarterPoints() {
+    if(balance <= 0) {
+        balance = 10;
+        updateBalanceDisplay();
+        showMessage("Here's 10 points to play with!");
+        // celebratory particles
+        for(let i = 0; i < 3; i++) {
+            const x = cssWidth/2 + (i - 1) * 30;
+            spawnParticles(x, cssHeight-140, '#60a5fa');
+        }
+    }
+}
+
+window.addEventListener('resize', ()=>{ resizeCanvas(); renderBoard(); });
+resizeCanvas(); updateBalanceDisplay(); renderBoard();
+
+document.getElementById('playBtn').addEventListener('click', ()=>{
+    if(balance <= 0) {
+        showMessage("You're out of points!");
+        giveStarterPoints();
+        return;
+    }
+    const wager = Math.max(1, parseInt(document.getElementById('wager').value,10) || 1);
+    dropBallAt(cssWidth/2 + (Math.random()-0.5)*40, wager);
+});
+
+// allow clicking on canvas to drop at that x
+canvas.addEventListener('click', (ev)=>{
+    const rect = canvas.getBoundingClientRect();
+    const x = (ev.clientX - rect.left); // CSS pixel based
+    const wager = Math.max(1, parseInt(document.getElementById('wager').value,10) || 1);
+    dropBallAt(x, wager);
+});
+
+</script>
+</body>
+</html>
