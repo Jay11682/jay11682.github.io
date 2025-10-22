@@ -30,9 +30,9 @@
         gtag('config', 'G-F48T6LRJCS');
     </script>
 </head>
-<body class="bg-lightgray text-primary">
+<body class="bg-lightgray text-primary pb-20">
     <div class="bg-lightgray text-primary">
-        <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray">
+        <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray z-50">
             <div class="text-2xl font-bold">Jay Snellings</div>
             <nav>
                 <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
@@ -43,29 +43,32 @@
             </nav>
         </header>
 
-        <section class="p-4 text-center">
-            <h1 class="text-4xl font-bold">Hello, my name is Jay</h1>
-            <img loading="lazy" src="extras/jay.png" alt="Jay Photo" class="rounded-full mx-auto my-4 h-80 w-80">
-        </section>
-
-        <section class="p-4">
-            <div class="bg-white border border-midgray p-6 rounded-lg mx-auto max-w-2xl">
-                <h2 class="text-2xl font-bold text-center md:text-left">About Me</h2>
-                <div class="prose prose-sm md:prose-base mx-auto md:mx-0 text-center md:text-left leading-relaxed">
-                    <p>I graduated in May 2024 with a Bachelor of Science in Computer Science from Colorado State University. I'm eager to apply the skills I gained during my degree toward a career in software development and to continue growing professionally as part of a strong team.</p>
-
-                    <p>I built this website to challenge myself and learn more about web development. I bring that same curiosity and willingness to learn to every opportunity I take on.</p>
-
-                    <p>I'm proficient in object-oriented programming with Java, Python, and C++, and I have working knowledge of JavaScript, C#, SQL, HTML, CSS, and React. See my resume or reach out for more details.</p>
+        <section class="py-8 px-4">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6 bg-white rounded-xl p-6 shadow-sm">
+                <div class="md:flex-1 text-center md:text-left space-y-3">
+                    <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                        Welcome to my portfolio!
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-primary">
+                        Hello, I'm Jay
+                    </h1>
+                    <p class="text-xl text-primary/80 font-medium">I'm a Data Engineer ready to step into software development.</p>
+                </div>
+                <div class="relative flex-shrink-0">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-blue-500/20 rounded-full blur-xl"></div>
+                    <img loading="lazy" src="extras/jay.png" alt="Jay Photo" 
+                         class="relative rounded-full w-56 h-56 md:w-64 md:h-64 object-cover border-4 border-white shadow-lg
+                                transform transition duration-300 hover:scale-102 hover:shadow-xl">
                 </div>
             </div>
         </section>
 
         <section class="p-4">
-            <div id="projects"></div>
-            <h2 class="text-2xl font-bold mb-4">Projects</h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div id="projects" class="lg:col-span-3 mb-4">
+                    <h2 class="text-2xl font-bold">Projects</h2>
+                </div>
+
                 <a href="GptRecruiter.html">
                     <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img loading="lazy" src="extras/RunScripts.png" alt="GPT Recruiter" class="object-cover h-48 w-full mb-2">
@@ -82,12 +85,23 @@
                         <p>A system where a company can create and maintain employees, qualifications, and projects.</p>
                     </div>
                 </a>
+
+                <div class="bg-white border border-midgray p-4 rounded-lg">
+                    <h3 class="font-bold">About Me</h3>
+                    <div class="prose prose-sm leading-relaxed">
+                        <p>I graduated in May 2024 with a Bachelor of Science in Computer Science from Colorado State University. I'm eager to apply the skills I gained during my degree toward a career in software development.</p>
+                        <p class="mt-2">I built this website to challenge myself and learn more about web development. I bring that same curiosity and willingness to learn to every opportunity I take on.</p>
+                        <p class="mt-2">I'm proficient in object-oriented programming with Java, Python, and C++, and I have working knowledge of JavaScript, C#, SQL, HTML, CSS, and React.</p>
+                    </div>
+                </div>
+
                 <a href="DeviceManagementSystem.html">
                     <div class="bg-white border border-midgray p-4 rounded-lg">
                         <img loading="lazy" src="extras/UserManage.png" alt="User Device Management System Project" class="object-cover h-48 w-full mb-2">
                         <h3 class="font-bold">User Device Management System Project</h3>
                         <i>Languages/Tools Used: MySQL, Java, JavaScript, HTML, Apache Tomcat</i>
                         <p>A web app that interacts with a MySQL database.</p>
+                        <div class="mt-2"></div>
                     </div>
                 </a>
                 <a href="MemoryRecall.html">
@@ -108,15 +122,7 @@
                 </a>
             </div>
         </section>
-
-        <section class="p-4">
-            <div class="bg-white border border-midgray p-4 rounded-lg">
-                <div id="contact"></div>
-                <h2 class="text-2xl font-bold mb-4">Contact</h2>
-                <a href="mailto:Jsnellings03@gmail.com">Email: Jsnellings03@gmail.com</a><br />
-                <a href="tel:720-308-5038">Phone: +1 (720) 308-5038</a>
-            </div>
-        </section>
+        <div id="contact"></div>
 
         <footer class="text-center p-4">
             <ul class="flex justify-center space-x-4 mb-4">
@@ -129,7 +135,7 @@
                 <li>
                     <div class="flex items-center">
                         <img loading="lazy" src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
-                        <a href="tel:720-308-5038" class="hover:underline">+1 (720) 308-5038</a>
+                        <a href="tel:720-308-5038" class="hover:underline whitespace-nowrap">+1 (720) 308-5038</a>
                     </div>
                 </li>
                 <li class="flex space-x-2">
