@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
     <style>
         /* tiny custom styles for canvas centering */
-        .plinko-canvas { background: linear-gradient(180deg,#f8fafc,#f1f5f9); border-radius: 12px; }
+        .plinko-canvas { background: linear-gradient(180deg,#f8fafc,#f1f5f9); border-radius: 12px; position: relative; }
         /* popup message styles */
         .toast-message {
-            position: fixed;
+            position: absolute;
             left: 50%;
-            bottom: 24px;
+            top: 70px;
             transform: translateX(-50%);
             background: rgba(0,0,0,0.8);
             color: white;
@@ -22,10 +22,10 @@
             border-radius: 9999px;
             font-size: 0.875rem;
             z-index: 50;
-            animation: slideUp 0.3s ease-out;
+            animation: slideDown 0.3s ease-out;
         }
-        @keyframes slideUp {
-            from { transform: translate(-50%, 100%); opacity: 0; }
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); opacity: 0; }
             to { transform: translate(-50%, 0); opacity: 1; }
         }
     </style>
@@ -232,7 +232,8 @@ function dropBallAt(x0, wager){
         giveStarterPoints();
         return;
     }
-    if(wager <= 0 || wager > balance){ alert('Invalid wager'); return; }
+    // Cap wager at current balance
+    wager = Math.min(Math.max(1, wager), balance);
     balance -= wager; updateBalanceDisplay();
 
     isAnimating = true;
@@ -333,10 +334,13 @@ function dropBallAt(x0, wager){
 
 // show a popup message that fades out
 function showMessage(message) {
+    const container = document.querySelector('.plinko-canvas');
+    if (!container) return;
+    
     const toast = document.createElement('div');
     toast.className = 'toast-message';
     toast.textContent = message;
-    document.body.appendChild(toast);
+    container.appendChild(toast);
     setTimeout(() => {
         toast.style.opacity = '0';
         toast.style.transition = 'opacity 0.3s ease-out';
@@ -346,16 +350,16 @@ function showMessage(message) {
 
 // give points when player has zero
 function giveStarterPoints() {
-    if(balance <= 0) {
-        balance = 10;
-        updateBalanceDisplay();
-        showMessage("Here's 10 points to play with!");
-        // celebratory particles
-        for(let i = 0; i < 3; i++) {
-            const x = cssWidth/2 + (i - 1) * 30;
-            spawnParticles(x, cssHeight-140, '#60a5fa');
-        }
+    balance = 250;
+    updateBalanceDisplay();
+    showMessage("Here's 250 points to play with!");
+    // celebratory particles in a wider arc
+    for(let i = 0; i < 5; i++) {
+        const x = cssWidth/2 + (i - 2) * 40;
+        spawnParticles(x, cssHeight-140, '#60a5fa');
     }
+    // ensure we can click again
+    isAnimating = false;
 }
 
 window.addEventListener('resize', ()=>{ resizeCanvas(); renderBoard(); });
@@ -363,20 +367,47 @@ resizeCanvas(); updateBalanceDisplay(); renderBoard();
 
 document.getElementById('playBtn').addEventListener('click', ()=>{
     if(balance <= 0) {
-        showMessage("You're out of points!");
+        // showMessage("You're out of points!");
         giveStarterPoints();
+        // Try dropping the ball after a short delay to let points update
+        setTimeout(() => {
+            dropBallAt(cssWidth/2 + (Math.random()-0.5)*40, getWager());
+        }, 100);
         return;
     }
-    const wager = Math.max(1, parseInt(document.getElementById('wager').value,10) || 1);
-    dropBallAt(cssWidth/2 + (Math.random()-0.5)*40, wager);
+    dropBallAt(cssWidth/2 + (Math.random()-0.5)*40, getWager());
 });
+
+// get current wager value, capped at balance
+function getWager() {
+    const input = document.getElementById('wager');
+    const value = Math.max(1, parseInt(input.value, 10) || 1);
+    const capped = Math.min(value, balance);
+    // Update input if we had to cap it
+    if(capped !== value) {
+        input.value = capped;
+    }
+    return capped;
+}
 
 // allow clicking on canvas to drop at that x
 canvas.addEventListener('click', (ev)=>{
+    if(isAnimating) return; // prevent new drops while animating
+    
     const rect = canvas.getBoundingClientRect();
     const x = (ev.clientX - rect.left); // CSS pixel based
-    const wager = Math.max(1, parseInt(document.getElementById('wager').value,10) || 1);
-    dropBallAt(x, wager);
+    
+    if(balance <= 0) {
+        // showMessage("You're out of points!");
+        giveStarterPoints();
+        // Try dropping the ball after a short delay to let points update
+        setTimeout(() => {
+            dropBallAt(x, getWager());
+        }, 100);
+        return;
+    }
+    
+    dropBallAt(x, getWager());
 });
 
 </script>
