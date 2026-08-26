@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,16 +33,7 @@
 </head>
 <body class="bg-lightgray text-primary pb-20">
     <div class="bg-lightgray text-primary">
-        <header class="flex justify-between items-center p-4 sticky top-0 bg-white border-b border-midgray z-50">
-            <div class="text-2xl font-bold">Jay Snellings</div>
-            <nav>
-                <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
-                <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
-                <a href="#projects" class="mx-2 hover:underline">Projects</a>
-                <a href="extras/JaySnellingsResume.docx" download class="mx-2 hover:underline">Download Resume</a>
-                <a href="#contact" class="mx-2 hover:underline">Contact</a>
-            </nav>
-        </header>
+        <header data-component="home-header"></header>
 
         <section class="py-8 px-4">
             <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6 bg-white rounded-xl p-6 shadow-sm">
@@ -103,7 +95,6 @@
                         <h3 class="font-bold">User Device Management System Project</h3>
                         <i>Languages/Tools Used: MySQL, Java, JavaScript, HTML, Apache Tomcat</i>
                         <p>A web app that interacts with a MySQL database.</p>
-                        <div class="mt-2"></div>
                     </div>
                 </a>
                 <a href="MemoryRecall.html">
@@ -124,29 +115,8 @@
                 </a>
             </div>
         </section>
-        <div id="contact"></div>
-
-        <footer class="text-center p-4">
-            <ul class="flex justify-center space-x-4 mb-4">
-                <li>
-                    <div class="flex items-center">
-                        <img loading="lazy" src="extras/envelope.png" alt="Email" class="w-6 h-6 mr-2">
-                        <a href="mailto:Jsnellings03@gmail.com" class="hover:underline">Jsnellings03@gmail.com</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <img loading="lazy" src="extras/phone.png" alt="Phone" class="w-6 h-6 mr-2">
-                        <a href="tel:720-308-5038" class="hover:underline whitespace-nowrap">+1 (720) 308-5038</a>
-                    </div>
-                </li>
-                <li class="flex space-x-2">
-                    <a href="https://www.linkedin.com/in/jay-snellings/" class="w-6 h-6 mr-2"><i class="fab fa-linkedin text-primary"></i></a>
-                    <a href="https://github.com/Jay11682" class="w-6 h-6 mr-2"><i class="fab fa-github text-primary"></i></a>
-                </li>
-            </ul>
-            <p>&copy; <script>document.write(new Date().getFullYear());</script> Jay Snellings. All Rights Reserved.</p>
-        </footer>
+        <footer data-component="footer"></footer>
+        <script src="components.js"></script>
     </div>
 </body>
 </html>
